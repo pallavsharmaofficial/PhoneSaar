@@ -1,0 +1,11 @@
+  Estimated power use (mAh):
+    Capacity: 5000, Computed drain: 5846, actual drain: 7550-7700
+    Screen: 1678 Excluded from smearing
+    Uid 1000: 676 ( cpu=675 wake=0.261 radio=0.472 ) Excluded from smearing
+    Uid u0a106: 591 ( cpu=273 radio=199 gps=109 sensor=10.3 ) Including smearing: 1560 ( screen=667 proportional=303 )
+    Uid u0a413: 512 ( cpu=239 radio=95.4 gps=175 ) Including smearing: 945 ( screen=250 proportional=183 )
+    Uid 0: 376 ( cpu=375 radio=1.38 ) Excluded from smearing
+    Uid u0a306: 234 ( cpu=78.6 radio=155 ) Including smearing: 825 ( screen=431 proportional=160 )
+    Cell standby: 165 ( radio=165 ) Excluded from smearing
+    Uid u0a138: 145 ( cpu=57.2 radio=88.1 ) Including smearing: 461 ( screen=226 proportional=89.4 )
+

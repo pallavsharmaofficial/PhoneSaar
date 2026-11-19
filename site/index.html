@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PhoneSaar: a faster, lighter phone</title>
+  <meta name="description" content="PhoneSaar makes an Android phone or TV faster and easier on the battery. It never deletes photos or logs you out, asks before turning anything off, and has one-tap undo.">
+  <link rel="canonical" href="https://pallavsharmaofficial.github.io/PhoneSaar/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./">Phone<em>Saar</em></a>
+    <a class="btn" href="./app/">Open web app</a>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>A faster, lighter phone, without the risk.</h1>
+      <p class="lead">PhoneSaar clears out what slows down an Android phone or TV and finds the apps that drain the battery. It is made to be safe for the whole family to use.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="./app/">Open web app</a>
+        <a class="btn" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar.apk">Download Android app</a>
+      </div>
+      <p class="fine">The web app works over a USB cable in Chrome or Edge on a computer. The Android app works over Wi-Fi.</p>
+    </section>
+
+    <section class="section">
+      <div class="promise">
+        <h2>Our safety promise</h2>
+        <ul>
+          <li>It never deletes your photos or any other files.</li>
+          <li>It never logs you out of an app or account.</li>
+          <li>It asks before turning anything off, one app at a time.</li>
+          <li>Every change can be undone with one tap, or with a script you can keep.</li>
+          <li>Important apps (phone, messages, Google, banking, WhatsApp, streaming) are locked and can never be touched.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <div class="grid">
+        <div class="card"><h3>Report</h3><p>See memory, storage, battery and heat, before and after.</p></div>
+        <div class="card"><h3>Boost</h3><p>One tap to close background apps and speed up the screen.</p></div>
+        <div class="card"><h3>Battery</h3><p>Find the apps that use the most, and limit them in the background.</p></div>
+        <div class="card"><h3>Debloat</h3><p>Turn off pre-installed extras, with a plain description of each.</p></div>
+        <div class="card"><h3>Fix-ups</h3><p>Location, animations, touch and hold, and app permissions.</p></div>
+        <div class="card"><h3>Undo</h3><p>Put back any change, one by one or all at once.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Set up in five steps</h2>
+      <ol class="steps">
+        <li>Open <b>Settings, About phone</b> and tap <b>Build number</b> seven times to turn on Developer options.</li>
+        <li>Open <b>Developer options</b> and turn on <b>USB debugging</b>. For Wi-Fi with the Android app, turn on <b>Wireless debugging</b> instead.</li>
+        <li>For the Android app, tap <b>Pair device with pairing code</b> and type the 6-digit code into PhoneSaar.</li>
+        <li>For the web app, plug the phone into a computer, press <b>Connect</b> and pick it. Close Android Studio and any other adb program first, because only one program can use the cable.</li>
+        <li>On the phone, tap <b>Allow</b> when it asks about USB debugging.</li>
+      </ol>
+      <div class="note">
+        <h3>If a change is blocked</h3>
+        <p><b>OPPO, realme and OnePlus (ColorOS):</b> in Developer options, turn on <b>Disable permission monitoring</b>, then reconnect.</p>
+        <p><b>Xiaomi, Redmi and POCO (MIUI):</b> in Developer options, turn on <b>USB debugging (Security settings)</b>. It needs a Mi account and a SIM.</p>
+        <p class="fine">PhoneSaar always shows what the phone really answered. A blocked change is shown as blocked, never as done.</p>
+      </div>
+    </section>
+  </main>
+  <footer>Everything runs on your device and nothing is uploaded. <a href="privacy.html">Privacy</a></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PhoneSaar web app</title>
+  <meta name="description" content="Make an Android phone or TV faster and lighter on battery over USB. Nothing is uploaded.">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">Phone<em>Saar</em></a>
+    <span class="muted">Web app</span>
+  </header>
+  <main id="app">
+    <section id="connect" class="card"></section>
+    <div id="device" hidden>
+      <section id="report" class="card"></section>
+      <section id="boost" class="card"></section>
+      <section id="battery" class="card"></section>
+      <section id="debloat" class="card"></section>
+      <section id="fixups" class="card"></section>
+    </div>
+    <section id="undo" class="card"></section>
+  </main>
+  <footer class="foot">Everything runs in this browser tab. Nothing is uploaded. <a href="../privacy.html">Privacy</a></footer>
+  <dialog id="confirm"></dialog>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

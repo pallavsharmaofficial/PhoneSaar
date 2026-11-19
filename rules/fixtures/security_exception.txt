@@ -1,0 +1,3 @@
+Exception occurred while executing 'put':
+java.lang.SecurityException: Permission denial: writing to settings requires:android.permission.WRITE_SECURE_SETTINGS
+	at com.android.providers.settings.SettingsProvider.enforceWritePermission(SettingsProvider.java:2375)

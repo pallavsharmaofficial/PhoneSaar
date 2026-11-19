@@ -1,0 +1,11 @@
+package:android
+package:com.android.systemui
+package:com.google.android.gms
+package:com.android.vending
+package:com.facebook.appmanager
+package:com.facebook.services
+package:com.microsoft.skydrive
+package:com.mygalaxy
+package:com.samsung.android.game.gos
+package:com.whatsapp
+package:com.example.notes

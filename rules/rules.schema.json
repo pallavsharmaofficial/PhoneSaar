@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PhoneSaar rules",
+  "type": "object",
+  "required": ["version", "forbidden", "protected", "catalog", "oemHints", "boost"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "forbidden": { "type": "array", "items": { "type": "string" } },
+    "protected": { "type": "array", "items": { "type": "string" } },
+    "catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pkg", "vendor", "risk", "kind", "description"],
+        "properties": {
+          "pkg": { "type": "string", "pattern": "^[A-Za-z0-9_.]+$" },
+          "vendor": { "type": "string" },
+          "risk": { "enum": ["safe", "caution"] },
+          "kind": { "enum": ["tracking", "ads", "bloat", "optional", "updater"] },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "oemHints": {
+      "type": "object",
+      "required": ["default"],
+      "additionalProperties": { "type": "string" }
+    },
+    "boost": {
+      "type": "object",
+      "required": ["always", "animationScale", "optionalTrimCaches"],
+      "properties": {
+        "always": { "type": "array", "items": { "type": "string" } },
+        "animationScale": { "type": "string" },
+        "optionalTrimCaches": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

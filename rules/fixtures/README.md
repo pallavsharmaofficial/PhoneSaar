@@ -1,0 +1,1 @@
+Synthetic adb outputs in the exact format real devices print (Android 9–11: Xiaomi TV, Samsung, OPPO). Package names are generic; no real person's app list is stored here. Both the Kotlin and the TypeScript parser tests read these files.

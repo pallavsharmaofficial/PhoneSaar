@@ -1,0 +1,5 @@
+[ro.product.manufacturer]: [OPPO]
+[ro.product.model]: [CPH1937]
+[ro.build.version.release]: [11]
+[ro.build.version.sdk]: [30]
+[ro.serialno]: [TESTSERIAL01]

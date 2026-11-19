@@ -1,0 +1,8 @@
+Total PSS by process:
+     87,841K: com.netflix.ninja (pid 4969)
+     77,331K: com.mitv.tvhome.atv (pid 4057 / activities)
+     63,268K: com.google.android.gms (pid 3793)
+     38,027K: com.xiaomi.mitv.updateservice (pid 4687)
+      5,898K: com.miui.tv.analytics (pid 6545)
+
+Total PSS by OOM adjustment:

@@ -1,0 +1,9 @@
+Tasks: 612 total,   2 running, 610 sleeping,   0 stopped,   0 zombie
+  Mem:  3784096K total,  3698820K used,    85276K free,    12044K buffers
+ Swap:  2621436K total,  1210884K used,  1410552K free,   702316K cached
+800%cpu 112%user   0%nice  60%sys 620%idle   4%iow   4%irq   0%sirq   0%host
+%CPU]NAME
+ 334 dex2oat32
+ 112 system_server
+84.8 com.android.vending:background
+24.2 top
