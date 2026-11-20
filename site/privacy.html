@@ -4,18 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0d0a3a">
   <title>Privacy: PhoneSaar</title>
   <meta name="description" content="PhoneSaar runs on your device. Nothing is uploaded.">
   <link rel="canonical" href="https://pallavsharmaofficial.github.io/PhoneSaar/privacy.html">
+  <meta property="og:title" content="Privacy: PhoneSaar">
+  <meta property="og:image" content="https://pallavsharmaofficial.github.io/PhoneSaar/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
-    <a class="brand" href="./">Phone<em>Saar</em></a>
-    <a class="btn" href="./app/">Open web app</a>
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="PhoneSaar home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path fill="#fff" d="M17.8 5 8 18h6.200L13 27l10-13.500h-6.300z"/></svg>
+        <span>Phone<em>Saar</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="hide-m" href="./#features">Features</a>
+        <a class="hide-m" href="./#safety">Safety</a>
+        <a class="hide-m" href="launcher.html">Launcher</a>
+        <a class="keep" href="./#download">Download</a>
+        <a class="hide-m" href="./app/">Open web app</a>
+      </nav>
+    </div>
   </header>
-  <main class="narrow">
-    <h1>Privacy</h1>
+  <div class="page-head"><div class="mesh" aria-hidden="true"><i></i><i></i></div><div class="wrap"><p class="eyebrow">Privacy</p><h1>Your phone stays yours.</h1></div></div>
+  <main id="main" class="narrow">
     <p><b>Everything runs on your device and nothing is uploaded.</b> PhoneSaar has no account, no server of its own, no analytics and no ads.</p>
     <h2>The web app</h2>
     <p>It talks to your phone directly over the USB cable, from inside your browser tab. What it reads from the phone (app names, memory, battery) stays in that tab. The list of changes you made, used for Undo, is kept in your browser's local storage on this computer. Clear your site data to remove it.</p>
@@ -23,8 +44,17 @@
     <p>It connects to your own phone, or to another phone or TV on your network. Its undo log and paired devices stay in the app's private storage.</p>
     <h2>The one network request</h2>
     <p>The pages are hosted on GitHub Pages, and the Android app is downloaded from GitHub, so GitHub sees those requests like any website. PhoneSaar sends nothing about you or your phone anywhere.</p>
-    <p><a href="./">Back to home</a></p>
+    <p><a class="btn" href="./">Back to home</a></p>
   </main>
-  <footer>PhoneSaar</footer>
+  <footer>
+    <div class="wrap">
+      <div><p>Everything runs on your device and nothing is uploaded.</p></div>
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="launcher.html">Launcher</a></li>
+        <li><a href="https://github.com/pallavsharmaofficial/PhoneSaar">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
