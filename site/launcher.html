@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PhoneSaar Launcher: your phone, your design</title>
+  <meta name="description" content="A free Android home screen you design yourself: an app sphere ranked by what you use, notifications your way, Hindi and English voice, and a live design.json.">
+  <link rel="canonical" href="https://pallavsharmaofficial.github.io/PhoneSaar/launcher.html">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="launcher.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./">Phone<em>Saar</em></a>
+    <a class="btn" href="#download">Download</a>
+  </header>
+  <main>
+    <section class="l-hero">
+      <div>
+        <h1>Your phone, your design.</h1>
+        <p class="lead">PhoneSaar Launcher is a home screen you shape yourself: clean cards or a spinning sphere of your apps, your notifications where you want them, and a voice that understands हिन्दी and English. Everything stays on the phone.</p>
+        <div class="cta">
+          <a class="btn btn-primary" id="download" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk">Download launcher <span class="size">&nbsp;(about 2.5 MB)</span></a>
+          <a class="btn" href="#design">Design your own</a>
+        </div>
+        <p class="fine">Android 8.0 or newer. It is a normal app: you can switch back to your old home screen at any time.</p>
+      </div>
+      <img class="shot" src="launcher/mono-cards.png" alt="The Mono Cards home screen: clock, weather, photo, music, battery and mood, app list, calendar and dock in white cards" width="320">
+    </section>
+
+    <section class="section">
+      <h2>What it does</h2>
+      <div class="grid">
+        <div class="card"><h3>Sphere by use</h3><p>Your apps float on a 3D sphere. The ones you use most are biggest and in front. Drag to spin, tap to open, hold for app info, hide or pin.</p></div>
+        <div class="card"><h3>Notifications your way</h3><p>A feed grouped by app: tap to open, swipe to dismiss, reply in place, read aloud. Badges on your icons.</p></div>
+        <div class="card"><h3>हिन्दी and English voice</h3><p>Say "WhatsApp kholo", "torch on", "subah 6 baje alarm", "theme neon lagao" or "reply to WhatsApp saying okay". Typed in the search bar it works the same.</p></div>
+        <div class="card"><h3>Design it yourself</h3><p>Pick a theme, drag blocks around, change colours and fonts, or edit one text file and watch your phone update live.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Looks</h2>
+      <div class="shots">
+        <figure><img class="shot" src="launcher/edit-mode.png" alt="Edit mode with a block selected and the toolbar" loading="lazy"><figcaption>Edit the home screen in place</figcaption></figure>
+        <figure><img class="shot" src="launcher/themes.png" alt="The themes gallery with live previews" loading="lazy"><figcaption>Themes with live previews</figcaption></figure>
+        <figure><img class="shot" src="launcher/sphere.png" alt="The Sphere theme with apps on a 3D sphere" loading="lazy"><figcaption>Sphere, ranked by use</figcaption></figure>
+        <figure><img class="shot" src="launcher/neon.png" alt="The Neon theme" loading="lazy"><figcaption>Neon</figcaption></figure>
+        <figure><img class="shot" src="launcher/paper.png" alt="The Paper theme" loading="lazy"><figcaption>Paper</figcaption></figure>
+        <figure><img class="shot" src="launcher/minimal.png" alt="The Minimal theme" loading="lazy"><figcaption>Minimal</figcaption></figure>
+        <figure><img class="shot" src="launcher/drawer.png" alt="The app drawer with a fast scroller" loading="lazy"><figcaption>Swipe-up app drawer</figcaption></figure>
+        <figure><img class="shot" src="launcher/notifications.png" alt="The notification feed on the Sphere theme" loading="lazy"><figcaption>Notifications on home</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <h2>Install</h2>
+      <ol class="steps">
+        <li>On the phone, open this page in <b>Chrome</b> and tap <a href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk"><b>Download launcher</b></a>.</li>
+        <li>Tap <b>Open</b> when it finishes. If asked, allow <b>Install unknown apps</b> for Chrome, then tap <b>Install</b>.</li>
+        <li>Open <b>PhoneSaar Launcher</b>, choose your language, and look around before making it your Home app.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Make it your Home app</h2>
+      <ol class="steps">
+        <li>In the launcher, tap <b>Set as Home app</b> (or Settings, <b>Make PhoneSaar Launcher my Home app</b>) and choose it in the box Android shows.</li>
+        <li>On <b>Xiaomi, Redmi and POCO (HyperOS or MIUI)</b> the box can be missing: open <b>Settings, Apps, Default apps, Home screen</b> and pick <b>PhoneSaar Launcher</b>.</li>
+        <li>Press the Home button. You are on your new home screen.</li>
+      </ol>
+      <div class="note">
+        <h3>An honest note for HyperOS and MIUI</h3>
+        <p>On some Xiaomi builds, full-screen gestures fall back to the three navigation buttons when a third-party launcher is the Home app. That is decided by the system, not by the launcher.</p>
+      </div>
+      <h3>Going back to your old launcher</h3>
+      <p>Open <b>Settings, Apps, Default apps, Home screen</b> (the launcher also has a <b>Go back to my old launcher</b> button in its settings) and pick your old one. Nothing is lost; uninstalling the launcher also works.</p>
+    </section>
+
+    <section class="section" id="design">
+      <h2>Design your own</h2>
+      <p>Every look is one <code>design.json</code>: colours, fonts, corner radius, shadows, the blocks on the screen and where they sit. Edit it on your computer and the phone redraws in about a second; or change things on the phone itself and the same file is updated. Bad values never crash it: each one falls back and shows up in a small "design warnings" chip.</p>
+<pre class="code"><code># one-time: make it the Home app and give it usage and notification access
+tools/launcher-design.sh grant
+tools/launcher-design.sh home
+
+# edit my.json on your computer, save, and watch the phone follow
+tools/launcher-design.sh watch my.json
+
+tools/launcher-design.sh preset neon        # switch built-in themes
+tools/launcher-design.sh screenshot out.png</code></pre>
+      <p>The script needs only <code>adb</code> and Wireless or USB debugging. The full list of keys, with examples, is in <a href="https://github.com/pallavsharmaofficial/PhoneSaar/blob/main/android/launcher/DESIGN.md">DESIGN.md</a>.</p>
+    </section>
+
+    <section class="section" id="privacy">
+      <h2>Privacy</h2>
+      <ul>
+        <li>It works offline. The only thing that ever goes online is the <b>weather</b> card, and only if you turn it on: the city name you type (or your rounded, coarse location if you choose that) goes to Open-Meteo to get the temperature. You can switch the card off.</li>
+        <li><b>Notification access</b> lets the launcher show your notifications on the home screen and read them aloud. The content stays on the phone, is not stored and is never sent anywhere.</li>
+        <li><b>Usage access</b> lets the launcher count how often you open apps so the sphere can put them in order. The counts stay on the phone.</li>
+        <li>Voice uses your phone's own speech recognizer, offline where your phone supports it. Photos are chosen with Android's Photo Picker, so the launcher never gets storage access.</li>
+        <li>Contacts, calendar and location permissions are asked only when you use the feature that needs them.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>Everything runs on your device. <a href="./">PhoneSaar</a> &middot; <a href="privacy.html">Privacy</a></footer>
+</body>
+</html>
