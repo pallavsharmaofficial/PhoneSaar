@@ -27,13 +27,18 @@ android {
                 storePassword = System.getenv("PHONESAAR_KEYSTORE_PASSWORD")
                 keyAlias = System.getenv("PHONESAAR_KEY_ALIAS")
                 keyPassword = System.getenv("PHONESAAR_KEYSTORE_PASSWORD")
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
             }
         }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }
@@ -49,6 +54,8 @@ android {
         jvmTarget = "17"
     }
     packaging {
+        // Compressed native libs: smaller download and no page-alignment quirks on OEM installers.
+        jniLibs.useLegacyPackaging = true
         resources.excludes += setOf("META-INF/versions/9/OSGI-INF/MANIFEST.MF", "META-INF/DEPENDENCIES")
     }
     sourceSets["main"].assets.srcDir(layout.buildDirectory.dir("generated/rules"))
