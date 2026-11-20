@@ -4,87 +4,414 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>PhoneSaar: a faster, lighter phone</title>
-  <meta name="description" content="PhoneSaar makes an Android phone faster and easier to use, in Hindi or English. Install and use it right away; it never deletes photos or logs you out.">
+  <meta name="theme-color" content="#0d0a3a">
+  <title>PhoneSaar: a faster, safer phone, in Hindi or English</title>
+  <meta name="description" content="PhoneSaar checks your Android phone's health, speeds it up and has an offline Hindi and English helper. It never deletes photos or logs you out, and every change can be undone.">
   <link rel="canonical" href="https://pallavsharmaofficial.github.io/PhoneSaar/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PhoneSaar: a faster, safer phone, in Hindi or English">
+  <meta property="og:description" content="Phone health, one-tap Boost and an offline Hindi and English helper. Never deletes photos or logs you out. Every change can be undone.">
+  <meta property="og:url" content="https://pallavsharmaofficial.github.io/PhoneSaar/">
+  <meta property="og:image" content="https://pallavsharmaofficial.github.io/PhoneSaar/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PhoneSaar: a faster, safer phone, in Hindi or English">
+  <meta name="twitter:description" content="Phone health, one-tap Boost and an offline Hindi and English helper. Never deletes photos or logs you out.">
+  <meta name="twitter:image" content="https://pallavsharmaofficial.github.io/PhoneSaar/img/og.jpg">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    </defs>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 2 5 13.5h5.5L9.5 22 19 9.5h-5.8z"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H4zM9 20h6M12 16v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 18 5-5 4 4 3-3 4 4"/></g></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11m0-1V4.5a1.5 1.5 0 0 1 3 0V11m0-4.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-.5A6 6 0 0 1 5 16.5L3.7 13a1.5 1.5 0 0 1 2.6-1.4L8 14"/></g></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></g></symbol>
+    <symbol id="i-widget" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="9" rx="3"/><path d="M7 18h10"/></g></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0 5 5L9 22l-3-3zM6 3l3 3-2 2-3-3z"/></g></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 14 4-5"/></g></symbol>
+    <symbol id="i-wifioff" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.800a15 15 0 0 1 20 0M5 12.500a10 10 0 0 1 14 0M8.500 16a5 5 0 0 1 7 0M12 19.500h.01M3 3l18 18"/></g></symbol>
+  </svg>
+
+  <a class="skip" href="#main" data-hi="सीधे मुख्य भाग पर जाएँ">Skip to content</a>
+
   <header class="nav">
-    <a class="brand" href="./">Phone<em>Saar</em></a>
-    <a class="btn" href="./app/">Open web app</a>
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="PhoneSaar home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path fill="#fff" d="M17.800 5 8 18h6.200L13 27l10-13.500h-6.300z"/></svg>
+        <span>Phone<em>Saar</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="hide-m" href="#features" data-hi="खूबियाँ">Features</a>
+        <a class="hide-m" href="#safety" data-hi="सुरक्षा">Safety</a>
+        <a class="hide-m" href="launcher.html">Launcher</a>
+        <a class="keep" href="#download" data-hi="डाउनलोड">Download</a>
+        <a class="hide-m" href="./app/" data-hi="वेब ऐप खोलें">Open web app</a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हिं</button>
+        </div>
+      </nav>
+    </div>
   </header>
-  <main>
+
+  <main id="main">
     <section class="hero">
-      <h1>A faster, easier phone, without the risk.</h1>
-      <p class="lead">PhoneSaar checks your phone's health, speeds it up, and has a simple helper that sorts your apps and does things when you ask, in हिन्दी or English. It is made to be safe for the whole family, including parents and grandparents.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="./app/">Open web app</a>
-        <a class="btn" href="#install">Download Android app</a>
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow" data-hi="Android के लिए">For Android phones</p>
+          <h1><span data-hi="एक तेज़, आसान फ़ोन,">A faster, easier phone,</span> <span class="grad-text" data-hi="बिना किसी जोखिम के।">without the risk.</span></h1>
+          <p class="lead" data-hi="PhoneSaar आपके फ़ोन की सेहत जाँचता है, उसे तेज़ करता है, और एक सीधा-सादा सहायक देता है जो ऐप सजाता है और कहने पर काम करता है, हिन्दी या English में। पूरे परिवार के लिए, माँ-पापा और दादा-दादी के लिए भी।">PhoneSaar checks your phone's health, speeds it up, and gives you a simple helper that sorts your apps and does things when you ask, in हिन्दी or English. Made for the whole family, including parents and grandparents.</p>
+          <ul class="chips">
+            <li class="chip"><svg aria-hidden="true"><use href="#i-check"/></svg><span data-hi="फ़ोटो कभी नहीं मिटाता">Never deletes photos</span></li>
+            <li class="chip"><svg aria-hidden="true"><use href="#i-undo"/></svg><span data-hi="हर बदलाव वापस">Every change undoable</span></li>
+            <li class="chip"><svg aria-hidden="true"><use href="#i-wifioff"/></svg><span data-hi="सहायक इंटरनेट के बिना">Helper works offline</span></li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-primary btn-lg" href="#download"><svg aria-hidden="true"><use href="#i-down"/></svg><span data-hi="APK डाउनलोड करें">Download APK</span></a>
+            <a class="btn btn-ghost btn-lg" href="./app/"><svg aria-hidden="true"><use href="#i-web"/></svg><span data-hi="वेब ऐप खोलें">Open web app</span></a>
+          </div>
+          <p class="fine" data-hi="Android ऐप इंस्टॉल होते ही चलने लगता है। वेब ऐप कंप्यूटर के लिए है: Chrome या Edge में USB केबल से चलता है।">The Android app works as soon as it is installed. The web app is for computers: it works over a USB cable in Chrome or Edge.</p>
+        </div>
+        <div class="hero-stage" id="stage">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="device-wrap">
+            <div class="device" style="--w:300px">
+              <div class="screen"><img src="img/home-en-540.webp" srcset="img/home-en-360.webp 360w, img/home-en-540.webp 540w" sizes="300px" width="540" height="1200" alt="PhoneSaar Home screen: 'Your phone is fine' with memory, storage, battery and temperature"></div>
+            </div>
+          </div>
+          <div class="meter" aria-hidden="true">
+            <small data-hi="बूस्ट से पहले और बाद">Before and after Boost</small>
+            <div class="meter-row">
+              <svg class="ring" viewBox="0 0 72 72"><circle class="track" cx="36" cy="36" r="30"/><circle class="val" cx="36" cy="36" r="30"/></svg>
+              <div class="nums"><span class="n-before">38%</span><span class="n-after">48%</span></div>
+            </div>
+            <div class="lbl"><b data-hi="खाली मेमोरी">Free memory</b> <span data-hi="· टेस्ट फ़ोन का उदाहरण">· example on a test phone</span></div>
+          </div>
+          <div class="float-card" aria-hidden="true"><svg><use href="#i-check"/></svg><span data-hi="फ़ोन ठीक है">Phone is fine</span></div>
+        </div>
       </div>
-      <p class="fine">The Android app works as soon as it is installed. The web app is for computers: it works over a USB cable in Chrome or Edge.</p>
     </section>
 
-    <section class="section">
-      <div class="promise">
-        <h2>Our safety promise</h2>
-        <ul>
-          <li>It never deletes your photos or any other files.</li>
-          <li>It never logs you out of an app or account.</li>
-          <li>It asks before turning anything off, one app at a time.</li>
-          <li>Every change can be undone with one tap, or with a script you can keep.</li>
-          <li>Important apps (phone, messages, Google, banking, WhatsApp, streaming) are locked and can never be touched.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>What it does</h2>
-      <div class="grid">
-        <div class="card"><h3>Phone health</h3><p>Memory, storage, battery and heat in plain words, with what to do next. No setup.</p></div>
-        <div class="card"><h3>Helper (optional)</h3><p>Your apps sorted into simple groups, and spoken or typed requests like "WhatsApp kholo" or "subah 6 baje alarm". Works offline; nothing leaves the phone.</p></div>
-        <div class="card"><h3>Widget</h3><p>One-tap Boost and free memory on your home screen.</p></div>
-        <div class="card"><h3>Report</h3><p>See memory, storage, battery and heat, before and after.</p></div>
-        <div class="card"><h3>Boost</h3><p>One tap to close background apps and speed up the screen.</p></div>
-        <div class="card"><h3>Battery</h3><p>Find the apps that use the most, and limit them in the background.</p></div>
-        <div class="card"><h3>Debloat</h3><p>Turn off pre-installed extras, with a plain description of each.</p></div>
-        <div class="card"><h3>Fix-ups</h3><p>Location, animations, touch and hold, and app permissions.</p></div>
-        <div class="card"><h3>Undo</h3><p>Put back any change, one by one or all at once.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="install">
-      <h2>Install the Android app</h2>
-      <ol class="steps">
-        <li>On the phone, open this page in <b>Chrome</b> and tap <a href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar.apk"><b>Download PhoneSaar (about 6 MB)</b></a>.</li>
-        <li>When the download finishes, tap <b>Open</b>. If the phone asks, allow <b>Install unknown apps</b> for Chrome, then go back and tap <b>Install</b>.</li>
-        <li>Open PhoneSaar and choose हिन्दी or English. That's it: health check, Boost and the helper work right away.</li>
+    <div class="wrap">
+      <ol class="steps-strip">
+        <li class="reveal"><div class="card"><span class="num">1</span><h3 data-hi="डाउनलोड करें">Download</h3><p data-hi="Chrome में एक टैप से, लगभग 6.8 MB।">One tap in Chrome, about 6.8 MB.</p></div></li>
+        <li class="reveal" style="--d:.1s"><div class="card"><span class="num">2</span><h3 data-hi="इंस्टॉल करें">Install</h3><p data-hi="खोलें, और अगर फ़ोन पूछे तो इंस्टॉल की अनुमति दें।">Open it, and allow the install if the phone asks.</p></div></li>
+        <li class="reveal" style="--d:.2s"><div class="card"><span class="num">3</span><h3 data-hi="भाषा चुनें, बस!">Pick a language, done</h3><p data-hi="हिन्दी या English चुनें। सेहत जाँच और सहायक तुरंत चलते हैं।">Choose हिन्दी or English. Health check and the helper work right away.</p></div></li>
       </ol>
-      <div class="note">
-        <h3>"App not installed" or "package appears to be invalid"?</h3>
-        <p>The download was cut short or an older copy was opened. Delete <b>phonesaar.apk</b> from the <b>Downloads</b> folder, download it again in Chrome on a steady connection, and open the new file from Chrome's download list. Files forwarded through WhatsApp or Telegram can arrive broken, so download from this page instead.</p>
-        <p class="fine">Requires Android 8.0 or newer. New versions install over the old one; nothing is lost.</p>
+    </div>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-hi="खूबियाँ">What it does</p>
+          <h2 data-hi="फ़ोन की ज़रूरत की हर चीज़, सरल शब्दों में।">Everything your phone needs, in plain words.</h2>
+          <p class="lead" data-hi="ये तस्वीरें असली PhoneSaar ऐप की हैं।">These are screenshots of the real PhoneSaar app.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text reveal from-l">
+            <span class="pill" data-hi="कोई सेटअप नहीं">No setup</span>
+            <h3 style="font-size:1.9rem" data-hi="आपके फ़ोन की सेहत, आसान शब्दों में">Your phone's health, in plain words</h3>
+            <p class="lead" data-hi="मेमोरी, स्टोरेज, बैटरी और गर्मी, सब एक कार्ड में, एक सीधे फ़ैसले के साथ और अगला कदम बताते हुए।">Memory, storage, battery and heat on one card, with a simple verdict and what to do next.</p>
+            <ul>
+              <li data-hi="Android की अपनी जानकारी से बनता है, इसलिए कुछ सेट नहीं करना पड़ता।">Built from Android's own information, so nothing to set up.</li>
+              <li data-hi="स्टोरेज, बैटरी सेवर और बैटरी की खपत के पेज एक टैप पर।">Shortcuts to storage, battery saver and battery usage.</li>
+            </ul>
+          </div>
+          <div class="feature-visual reveal from-r">
+            <div class="device-wrap"><div class="device dw-md" style="--w:250px"><div class="screen"><img loading="lazy" src="img/home-hi-540.webp" srcset="img/home-hi-360.webp 360w, img/home-hi-540.webp 540w" sizes="250px" width="540" height="1200" alt="PhoneSaar Home screen in Hindi: आपका फ़ोन ठीक है, with memory, storage and battery"></div></div></div>
+          </div>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-text reveal from-r">
+            <span class="pill" data-hi="एक टैप">One tap</span>
+            <h3 style="font-size:1.9rem" data-hi="बूस्ट: फ़ोन को हल्का करें">Boost: lighten the load</h3>
+            <p class="lead" data-hi="पीछे चल रहे ऐप बंद करता है ताकि फ़ोन फुर्तीला लगे। कुछ ऐप अपने आप दोबारा शुरू हो सकते हैं, और PhoneSaar यह साफ़ बताता है।">Closes apps running in the background so the phone feels quicker. Some may restart by themselves, and PhoneSaar says so honestly.</p>
+            <ul>
+              <li data-hi="Android 14 और नए पर पूरे बूस्ट के लिए एक बार का पावर टूल्स सेटअप चाहिए। तब तक ऐप नकली नतीजा नहीं दिखाता, बल्कि यही बताता है।">On Android 14 and newer, a full Boost needs the one-time Power tools setup. Until then the app tells you so instead of showing a fake result.</li>
+              <li data-hi="हर नतीजा वही है जो फ़ोन ने सच में लौटाया।">Every result is what the phone really answered.</li>
+            </ul>
+          </div>
+          <div class="feature-visual reveal from-l">
+            <div class="device-wrap"><div class="device dw-md" style="--w:250px"><div class="screen"><img loading="lazy" src="img/boost-en-540.webp" srcset="img/boost-en-360.webp 360w, img/boost-en-540.webp 540w" sizes="250px" width="540" height="1200" alt="PhoneSaar after Boost: 'Quick boost done. Free memory 40% to 42%'"></div></div></div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text reveal from-l">
+            <span class="pill" data-hi="वैकल्पिक, पूरी तरह ऑफ़लाइन">Optional, fully offline</span>
+            <h3 style="font-size:1.9rem" data-hi="एक सहायक जो हिन्दी, Hinglish और English समझता है">A helper that understands Hindi, Hinglish and English</h3>
+            <p class="lead" data-hi="आपके ऐप आसान समूहों में सजे मिलते हैं। बोलकर या लिखकर कहिए: “WhatsApp kholo”, “subah 6 baje alarm”।">Your apps sorted into simple groups. Speak or type: &ldquo;WhatsApp kholo&rdquo;, &ldquo;subah 6 baje alarm&rdquo;.</p>
+            <ul>
+              <li data-hi="ऐप खोलना, फ़ोन करना (डायलर से), टॉर्च, अलार्म, टाइमर, सेहत, बूस्ट, सेटिंग पेज, कैमरा, समय और तारीख।">Open apps, call (through the dialer), torch, alarm, timer, health, boost, settings pages, camera, time and date.</li>
+              <li data-hi="जब तक आप चालू न करें, बंद रहता है। सब कुछ फ़ोन में ही रहता है।">Off until you turn it on. Everything stays on the phone.</li>
+            </ul>
+          </div>
+          <div class="feature-visual duo reveal from-r">
+            <div class="device-wrap"><div class="device dw-md" style="--w:230px"><div class="screen"><img loading="lazy" src="img/reply-en-540.webp" srcset="img/reply-en-360.webp 360w, img/reply-en-540.webp 540w" sizes="230px" width="540" height="1200" alt="PhoneSaar Assistant answering 'health' in English"></div></div></div>
+            <div class="device-wrap"><div class="device dw-md" style="--w:230px"><div class="screen"><img loading="lazy" src="img/apps-hi-540.webp" srcset="img/apps-hi-360.webp 360w, img/apps-hi-540.webp 540w" sizes="230px" width="540" height="1200" alt="PhoneSaar 'मेरे ऐप': apps sorted into groups in Hindi"></div></div></div>
+          </div>
+        </div>
+
+        <div class="feature flip">
+          <div class="feature-text reveal from-r">
+            <span class="pill" data-hi="होम स्क्रीन पर">On your home screen</span>
+            <h3 style="font-size:1.9rem" data-hi="विजेट और क्विक सेटिंग्स टाइल">Widget and Quick Settings tile</h3>
+            <p class="lead" data-hi="2×1 का विजेट खाली मेमोरी का प्रतिशत और आख़िरी बूस्ट का समय दिखाता है, एक Boost बटन के साथ। वैसा ही एक Quick Settings टाइल भी है।">A resizable 2&times;1 widget shows free memory and the time of the last boost, with one Boost button. There is a Quick Settings tile that does the same.</p>
+            <p class="fine" data-hi="अगर वायरलेस डीबगिंग उपलब्ध नहीं है, तो यह “क्विक बूस्ट” चलाता है और वही लिखकर बताता है।">If wireless debugging is not available, it runs a quick boost and labels it as one.</p>
+          </div>
+          <div class="feature-visual reveal from-l">
+            <div class="device-wrap"><div class="device dw-md" style="--w:250px"><div class="screen"><img loading="lazy" src="img/widget-540.webp" srcset="img/widget-360.webp 360w, img/widget-540.webp 540w" sizes="250px" width="540" height="1200" alt="PhoneSaar widget on the home screen showing free memory 43% and a Boost button"></div></div></div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text reveal from-l">
+            <span class="pill" data-hi="वैकल्पिक, एक बार का सेटअप">Optional, one-time setup</span>
+            <h3 style="font-size:1.9rem" data-hi="पावर टूल्स">Power tools</h3>
+            <p class="lead" data-hi="गहरा बूस्ट, बैटरी की सीमाएँ, पहले से इंस्टॉल फ़ालतू ऐप बंद करना और फ़िक्स-अप। ऐप ख़ुद एक-एक कदम दिखाकर सेटअप कराता है।">Deep boost, battery limits, turning off pre-installed extras and fix-ups. The app walks you through the setup, step by step.</p>
+            <ul>
+              <li data-hi="हर कदम तभी हरा होता है जब वह सच में पूरा हो जाए।">Each step turns green only when it is really done.</li>
+              <li data-hi="कोई ऐप बंद करने या अनुमति बदलने से पहले हर बार पूछता है। हर बदलाव Undo लॉग में दर्ज होता है।">It asks before every app is turned off or a permission is changed, and each change goes into the Undo log.</li>
+            </ul>
+            <p><a href="#power-setup" data-hi="सेटअप के कदम देखें">See the setup steps</a></p>
+          </div>
+          <div class="feature-visual duo reveal from-r">
+            <div class="device-wrap"><div class="device dw-md" style="--w:230px"><div class="screen"><img loading="lazy" src="img/pt-en-540.webp" srcset="img/pt-en-360.webp 360w, img/pt-en-540.webp 540w" sizes="230px" width="540" height="1200" alt="PhoneSaar Power tools setup wizard in English"></div></div></div>
+            <div class="device-wrap"><div class="device dw-md" style="--w:230px"><div class="screen"><img loading="lazy" src="img/pt-hi-540.webp" srcset="img/pt-hi-360.webp 360w, img/pt-hi-540.webp 540w" sizes="230px" width="540" height="1200" alt="PhoneSaar Power tools setup wizard in Hindi"></div></div></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Power tools (optional, one-time setup)</h2>
-      <p>Deep boost, battery limits and turning off pre-installed extras need Android&rsquo;s Wireless debugging. PhoneSaar walks you through it inside the app; these are the same steps.</p>
-      <ol class="steps">
-        <li>Open <b>Settings, About phone</b> and tap <b>Build number</b> seven times to turn on Developer options.</li>
-        <li>Open <b>Developer options</b> and turn on <b>USB debugging</b>. For Wi-Fi with the Android app, turn on <b>Wireless debugging</b> instead.</li>
-        <li>For the Android app, tap <b>Pair device with pairing code</b> and type the 6-digit code into PhoneSaar.</li>
-        <li>For the web app, plug the phone into a computer, press <b>Connect</b> and pick it. Close Android Studio and any other adb program first, because only one program can use the cable.</li>
-        <li>On the phone, tap <b>Allow</b> when it asks about USB debugging.</li>
-      </ol>
-      <div class="note">
-        <h3>If a change is blocked</h3>
-        <p><b>OPPO, realme and OnePlus (ColorOS):</b> in Developer options, turn on <b>Disable permission monitoring</b>, then reconnect.</p>
-        <p><b>Xiaomi, Redmi and POCO (MIUI):</b> in Developer options, turn on <b>USB debugging (Security settings)</b>. It needs a Mi account and a SIM.</p>
-        <p class="fine">PhoneSaar always shows what the phone really answered. A blocked change is shown as blocked, never as done.</p>
+    <section class="section on-night" id="safety">
+      <div class="wrap">
+        <div class="safe-hero reveal">
+          <svg viewBox="0 0 120 140" aria-hidden="true"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M60 6 108 24v36c0 36-20 62-48 74C32 122 12 96 12 60V24z" fill="url(#sh)"/><path d="M60 14 100 29v31c0 30-16 53-40 64-24-11-40-34-40-64V29z" fill="#0d0a3a" opacity=".35"/><path d="m38 70 15 15 30-32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <p class="eyebrow" data-hi="हमारा वादा">Our safety promise</p>
+            <h2 style="margin:0" data-hi="आपका फ़ोन, आपकी चीज़ें, सब सुरक्षित।">Your phone, your things, always safe.</h2>
+          </div>
+        </div>
+        <div class="promise-grid">
+          <div class="card glass-dark reveal"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-photo"/></svg></div><h3 data-hi="कोई फ़ोटो या फ़ाइल नहीं मिटती">Never deletes your photos or files</h3><p data-hi="PhoneSaar आपकी फ़ोटो या किसी और फ़ाइल को कभी नहीं मिटाता।">PhoneSaar never deletes your photos or any other files.</p></div>
+          <div class="card glass-dark reveal" style="--d:.07s"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-key"/></svg></div><h3 data-hi="कभी लॉग-आउट नहीं">Never logs you out</h3><p data-hi="किसी ऐप या अकाउंट से आपको कभी लॉग-आउट नहीं करता।">It never logs you out of an app or account.</p></div>
+          <div class="card glass-dark reveal" style="--d:.14s"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-hand"/></svg></div><h3 data-hi="बंद करने से पहले पूछता है">Asks before turning anything off</h3><p data-hi="कुछ भी बंद करने से पहले, एक-एक ऐप के लिए, पूछता है।">It asks before turning anything off, one app at a time.</p></div>
+          <div class="card glass-dark reveal" style="--d:.21s"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-undo"/></svg></div><h3 data-hi="हर बदलाव वापस हो सकता है">Every change can be undone</h3><p data-hi="एक टैप से Undo, या ऐसी स्क्रिप्ट से जिसे आप सँभालकर रख सकते हैं।">One tap to undo, or with a script you can keep.</p></div>
+          <div class="card glass-dark reveal" style="--d:.28s"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-lock"/></svg></div><h3 data-hi="ज़रूरी ऐप ताले में">Important apps are locked</h3><p data-hi="फ़ोन, मैसेज, Google, बैंकिंग, WhatsApp और स्ट्रीमिंग ऐप को कभी छुआ नहीं जा सकता।">Phone, messages, Google, banking, WhatsApp and streaming apps can never be touched.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="family">
+      <div class="wrap family">
+        <div class="reveal from-l">
+          <p class="eyebrow" data-hi="पूरे परिवार के लिए">For the whole family</p>
+          <h2 data-hi="माँ-पापा और दादा-दादी के लिए भी आसान।">Easy enough for parents and grandparents.</h2>
+          <ul class="tick-list">
+            <li data-hi="पहली बार खोलते ही हिन्दी या English चुनिए, और बाद में सेटिंग में बदल भी सकते हैं।">Choose हिन्दी or English the first time you open it, and change it later in Settings.</li>
+            <li data-hi="बड़े बटन और सीधे-सादे शब्द, कोई तकनीकी भाषा नहीं।">Big buttons and plain words, no technical jargon.</li>
+            <li data-hi="बोलकर कह दीजिए, टाइप करना ज़रूरी नहीं।">Just say what you want; typing is optional.</li>
+            <li data-hi="ज़रूरी ऐप ताले में हैं और हर बदलाव वापस हो सकता है, इसलिए गड़बड़ का डर नहीं।">Important apps are locked and every change can be undone, so there is nothing to be afraid of.</li>
+          </ul>
+        </div>
+        <div class="reveal from-r">
+          <div class="bigtype" aria-label="Example conversation">
+            <div class="bubble me" data-hi="व्हाट्सएप खोलो">WhatsApp kholo</div>
+            <div class="bubble" data-hi="जी, खोल रहा हूँ।">Sure, opening it.</div>
+            <span class="bigbtn" aria-hidden="true" data-hi="बूस्ट करें">Boost</span>
+          </div>
+          <p class="tilt-note" style="margin-top:12px" data-hi="ऊपर सिर्फ़ एक उदाहरण है कि बातचीत कैसी दिखती है।">The above is only an illustration of how a request looks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="launcher">
+      <div class="wrap">
+        <div class="teaser reveal">
+          <div style="display:grid;place-items:center">
+            <div class="device-wrap" style="transform:rotateY(10deg) rotateX(3deg)">
+              <div class="device still" style="--w:230px"><div class="screen" aria-hidden="true">
+                <div class="lmock">
+                  <div class="lc clock"><b>10:00</b><span>Friday</span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                  <div class="lc wide"><div class="ico"></div><span></span></div>
+                  <div class="lc wide"><div class="ico"></div><span></span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                  <div class="lc"><div class="ico"></div><span></span></div>
+                </div>
+              </div></div>
+            </div>
+          </div>
+          <div>
+            <span class="pill" data-hi="नया">New</span>
+            <h2 data-hi="PhoneSaar Launcher">PhoneSaar Launcher</h2>
+            <p class="lead" data-hi="एक पूरी तरह अपने हिसाब से बदलने वाला होम-स्क्रीन ऐप। थीम बदलिए, इस्तेमाल के हिसाब से ऐप का 3D गोला देखिए, नोटिफ़िकेशन फ़ीड पाइए, और हिन्दी या English में बोलकर चलाइए।">A fully customisable home-screen app. Change themes, see your apps as a 3D sphere sized by how often you use them, get a notification feed, and use voice in Hindi or English.</p>
+            <p data-hi="पहली थीम है “Mono Cards”: सफ़ेद, एक रंग के कार्ड वाला साफ़ लेआउट।">The first theme is &ldquo;Mono Cards&rdquo;, a clean white monochrome card layout.</p>
+            <div class="cta">
+              <a class="btn btn-primary" href="launcher.html" data-hi="Launcher डाउनलोड करें">Download Launcher</a>
+              <a class="btn" href="launcher.html" data-hi="और जानें">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-hi="डाउनलोड">Download</p>
+          <h2 data-hi="Android ऐप इंस्टॉल करें">Install the Android app</h2>
+        </div>
+        <div class="download">
+          <div class="dl-card reveal from-l">
+            <h3 data-hi="PhoneSaar for Android">PhoneSaar for Android</h3>
+            <ul class="dl-meta">
+              <li class="chip"><span data-hi="लगभग 6.8 MB">About 6.8 MB</span></li>
+              <li class="chip"><span data-hi="Android 8.0 या नया">Android 8.0 or newer</span></li>
+              <li class="chip"><span data-hi="कोई अकाउंट नहीं">No account</span></li>
+            </ul>
+            <p data-hi="फ़ोन पर यह पेज Chrome में खोलिए और नीचे का बटन दबाइए। नए वर्ज़न पुराने के ऊपर इंस्टॉल हो जाते हैं, कुछ खोता नहीं।">Open this page in Chrome on your phone and tap the button. New versions install over the old one; nothing is lost.</p>
+            <a class="btn btn-primary btn-lg" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar.apk"><svg aria-hidden="true"><use href="#i-down"/></svg><span data-hi="PhoneSaar डाउनलोड करें (लगभग 6.8 MB)">Download PhoneSaar (about 6.8 MB)</span></a>
+            <p class="fine" style="margin-top:14px" data-hi="कंप्यूटर पर हैं? वेब ऐप Chrome या Edge में USB केबल से चलता है।">On a computer? The web app works over USB in Chrome or Edge.</p>
+            <a class="btn btn-ghost" href="./app/" data-hi="वेब ऐप खोलें">Open web app</a>
+          </div>
+          <div class="reveal from-r">
+            <ol class="steps">
+              <li><b data-hi="डाउनलोड।">Download.</b> <span data-hi="फ़ोन पर इस पेज को Chrome में खोलिए और डाउनलोड बटन दबाइए।">On the phone, open this page in <b>Chrome</b> and tap the download button.</span></li>
+              <li><b data-hi="इंस्टॉल।">Install.</b> <span data-hi="डाउनलोड पूरा होने पर Open दबाइए। अगर फ़ोन पूछे, तो Chrome के लिए Install unknown apps की अनुमति दीजिए, फिर वापस आकर Install दबाइए।">When the download finishes, tap <b>Open</b>. If the phone asks, allow <b>Install unknown apps</b> for Chrome, then go back and tap <b>Install</b>.</span></li>
+              <li><b data-hi="भाषा चुनिए।">Choose a language.</b> <span data-hi="PhoneSaar खोलिए और हिन्दी या English चुनिए। बस: सेहत जाँच, बूस्ट और सहायक अभी चलते हैं।">Open PhoneSaar and choose हिन्दी or English. That&rsquo;s it: health check, Boost and the helper work right away.</span></li>
+            </ol>
+          </div>
+        </div>
+        <div class="acc" style="margin-top:34px">
+          <details class="reveal" open>
+            <summary data-hi="“App not installed” या “package appears to be invalid” दिखे तो?">&ldquo;App not installed&rdquo; or &ldquo;package appears to be invalid&rdquo;?</summary>
+            <div class="acc-body">
+              <p data-hi="डाउनलोड बीच में कट गया था या पुरानी कॉपी खुल गई। Downloads फ़ोल्डर से phonesaar.apk मिटाइए, स्थिर कनेक्शन पर Chrome में दोबारा डाउनलोड कीजिए, और Chrome की डाउनलोड सूची से नई फ़ाइल खोलिए।">The download was cut short or an older copy was opened. Delete <b>phonesaar.apk</b> from the <b>Downloads</b> folder, download it again in Chrome on a steady connection, and open the new file from Chrome&rsquo;s download list.</p>
+              <p data-hi="WhatsApp या Telegram से भेजी गई फ़ाइलें टूटी हुई आ सकती हैं, इसलिए इसी पेज से डाउनलोड कीजिए।">Files forwarded through WhatsApp or Telegram can arrive broken, so download from this page instead.</p>
+            </div>
+          </details>
+          <details class="reveal">
+            <summary data-hi="फ़ोन “Install unknown apps” की अनुमति माँगे तो?">The phone asks about &ldquo;Install unknown apps&rdquo;?</summary>
+            <div class="acc-body"><p data-hi="यह Android का सामान्य सवाल है, क्योंकि ऐप Play Store से नहीं आ रहा। Chrome के लिए अनुमति दीजिए, वापस जाकर Install दबाइए।">That is a normal Android question because the app does not come from the Play Store. Allow it for Chrome, go back and tap Install.</p></div>
+          </details>
+          <details class="reveal">
+            <summary data-hi="अपडेट कैसे करें?">How do I update?</summary>
+            <div class="acc-body"><p data-hi="नया APK उसी तरह डाउनलोड कीजिए। नया वर्ज़न पुराने के ऊपर इंस्टॉल होता है और कुछ नहीं खोता। Android 8.0 या नया चाहिए।">Download the new APK the same way. It installs over the old one and nothing is lost. Requires Android 8.0 or newer.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="power-setup">
+      <div class="wrap two-col">
+        <div class="reveal from-l">
+          <p class="eyebrow" data-hi="वैकल्पिक">Optional</p>
+          <h2 data-hi="पावर टूल्स (वैकल्पिक, एक बार का सेटअप)">Power tools (optional, one-time setup)</h2>
+          <p class="lead" data-hi="गहरे बूस्ट, बैटरी की सीमाओं और फ़ालतू ऐप बंद करने के लिए Android की वायरलेस डीबगिंग चाहिए। PhoneSaar ऐप के अंदर यही कदम दिखाता है।">Deep boost, battery limits and turning off pre-installed extras need Android&rsquo;s Wireless debugging. PhoneSaar walks you through it inside the app; these are the same steps.</p>
+        </div>
+        <div class="acc reveal from-r">
+          <details open>
+            <summary data-hi="सेटअप के 5 कदम">The setup steps</summary>
+            <div class="acc-body">
+              <ol class="steps" style="margin-top:6px">
+                <li data-hi="Settings, About phone खोलिए और Build number पर सात बार टैप कीजिए। इससे Developer options चालू होते हैं।">Open <b>Settings, About phone</b> and tap <b>Build number</b> seven times to turn on Developer options.</li>
+                <li data-hi="Developer options खोलकर USB debugging चालू कीजिए। Android ऐप से Wi-Fi पर चलाने के लिए उसकी जगह Wireless debugging चालू कीजिए।">Open <b>Developer options</b> and turn on <b>USB debugging</b>. For Wi-Fi with the Android app, turn on <b>Wireless debugging</b> instead.</li>
+                <li data-hi="Android ऐप के लिए: Pair device with pairing code दबाइए और 6 अंकों का कोड PhoneSaar में लिखिए।">For the Android app, tap <b>Pair device with pairing code</b> and type the 6-digit code into PhoneSaar.</li>
+                <li data-hi="वेब ऐप के लिए: फ़ोन को कंप्यूटर से जोड़िए, Connect दबाइए और फ़ोन चुनिए। पहले Android Studio और दूसरे adb प्रोग्राम बंद कर दीजिए, क्योंकि केबल एक ही प्रोग्राम इस्तेमाल कर सकता है।">For the web app, plug the phone into a computer, press <b>Connect</b> and pick it. Close Android Studio and any other adb program first, because only one program can use the cable.</li>
+                <li data-hi="फ़ोन पर USB debugging के बारे में पूछे जाने पर Allow दबाइए।">On the phone, tap <b>Allow</b> when it asks about USB debugging.</li>
+              </ol>
+            </div>
+          </details>
+          <details>
+            <summary data-hi="OPPO, realme, OnePlus (ColorOS) पर बदलाव रुके तो">OPPO, realme and OnePlus (ColorOS): a change is blocked</summary>
+            <div class="acc-body"><p data-hi="Developer options में Disable permission monitoring चालू कीजिए, फिर दोबारा जोड़िए।">In Developer options, turn on <b>Disable permission monitoring</b>, then reconnect.</p></div>
+          </details>
+          <details>
+            <summary data-hi="Xiaomi, Redmi, POCO (MIUI) पर बदलाव रुके तो">Xiaomi, Redmi and POCO (MIUI): a change is blocked</summary>
+            <div class="acc-body"><p data-hi="Developer options में USB debugging (Security settings) चालू कीजिए। इसके लिए Mi अकाउंट और SIM चाहिए।">In Developer options, turn on <b>USB debugging (Security settings)</b>. It needs a Mi account and a SIM.</p></div>
+          </details>
+          <p class="fine" data-hi="PhoneSaar हमेशा वही दिखाता है जो फ़ोन ने सच में जवाब दिया। रुका हुआ बदलाव “रुका” ही दिखता है, “हो गया” कभी नहीं।">PhoneSaar always shows what the phone really answered. A blocked change is shown as blocked, never as done.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap two-col">
+        <div class="reveal from-l">
+          <p class="eyebrow" data-hi="सवाल-जवाब">FAQ</p>
+          <h2 data-hi="अक्सर पूछे जाने वाले सवाल">Questions people ask</h2>
+        </div>
+        <div class="acc reveal from-r">
+          <details>
+            <summary data-hi="क्या यह सुरक्षित है?">Is it safe?</summary>
+            <div class="acc-body"><p data-hi="हाँ। यह फ़ोटो या फ़ाइलें नहीं मिटाता, कभी लॉग-आउट नहीं करता, ऐप बंद करने से पहले पूछता है, और ज़रूरी ऐप (फ़ोन, मैसेज, Google, बैंकिंग, WhatsApp, स्ट्रीमिंग) ताले में रहते हैं। ये नियम ऐप की कमांड परत में लागू हैं, सिर्फ़ स्क्रीन पर नहीं।">Yes. It never deletes photos or files, never logs you out, asks before turning an app off, and keeps important apps (phone, messages, Google, banking, WhatsApp, streaming) locked. These rules are enforced in the app&rsquo;s command layer, not just on screen.</p></div>
+          </details>
+          <details>
+            <summary data-hi="क्या इसे इंटरनेट चाहिए?">Does it need internet?</summary>
+            <div class="acc-body"><p data-hi="सहायक पूरी तरह ऑफ़लाइन चलता है और कुछ अपलोड नहीं होता। इंटरनेट बस ऐप डाउनलोड करने के लिए चाहिए। पावर टूल्स के सेटअप में फ़ोन का Wi-Fi से जुड़ा होना ज़रूरी है।">The helper is fully offline and nothing is uploaded. You need internet to download the app. The Power tools setup needs the phone to be connected to Wi-Fi.</p></div>
+          </details>
+          <details>
+            <summary data-hi="क्या फ़ोन रूट करना पड़ेगा?">Does it need root?</summary>
+            <div class="acc-body"><p data-hi="नहीं। रूट की ज़रूरत नहीं है। गहरे बूस्ट जैसे काम Android की अपनी वायरलेस डीबगिंग से होते हैं।">No. There is no root. Features like deep boost use Android&rsquo;s own wireless debugging.</p></div>
+          </details>
+          <details>
+            <summary data-hi="वायरलेस डीबगिंग क्यों चाहिए?">Why wireless debugging?</summary>
+            <div class="acc-body"><p data-hi="Android 14 और नए पर कोई ऐप दूसरे ऐप को बंद नहीं कर सकता, इसलिए बिना सेटअप के होम स्क्रीन ईमानदारी से “एक बार का सेटअप” कार्ड दिखाती है। गहरा बूस्ट, बैटरी की सीमाएँ और फ़ालतू ऐप बंद करना Android के इसी आधिकारिक तरीक़े से होता है, और यह वैकल्पिक है।">On Android 14 and newer an app can only close its own processes, so without setup Home honestly shows a &ldquo;one-time setup&rdquo; card. Deep boost, battery limits and turning off extras use this official Android route, and it is optional.</p></div>
+          </details>
+          <details>
+            <summary data-hi="कौन-से Android वर्ज़न चलेंगे?">Which Android versions work?</summary>
+            <div class="acc-body"><p data-hi="Android 8.0 और उससे नए। क्विक बूस्ट Android 8 से 13 पर चलता है; 14 और नए पर पूरे बूस्ट के लिए पावर टूल्स का सेटअप चाहिए।">Android 8.0 and newer. Quick boost runs on Android 8 to 13; on 14 and newer a full Boost needs the Power tools setup.</p></div>
+          </details>
+          <details>
+            <summary data-hi="बदलाव वापस कैसे करूँ?">How do I undo a change?</summary>
+            <div class="acc-body"><p data-hi="हर बदलाव Undo लॉग में दर्ज होता है। Undo स्क्रीन से किसी एक बदलाव को, या सबको, वापस कर सकते हैं। वेब ऐप लॉग को .sh फ़ाइल की तरह डाउनलोड करने भी देता है।">Every change is written to the Undo log. From the Undo screen you can revert one entry or all of them. The web app also lets you download the log as a .sh file.</p></div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
-  <footer>Everything runs on your device and nothing is uploaded. <a href="privacy.html">Privacy</a></footer>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <a class="brand" href="./" aria-label="PhoneSaar home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg)"/><path fill="#fff" d="M17.800 5 8 18h6.200L13 27l10-13.500h-6.300z"/></svg>
+          <span>Phone<em>Saar</em></span>
+        </a>
+        <p data-hi="सब कुछ आपके डिवाइस पर चलता है और कुछ भी अपलोड नहीं होता।">Everything runs on your device and nothing is uploaded.</p>
+      </div>
+      <ul>
+        <li><a href="launcher.html">Launcher</a></li>
+        <li><a href="./app/" data-hi="वेब ऐप">Web app</a></li>
+        <li><a href="privacy.html" data-hi="प्राइवेसी">Privacy</a></li>
+        <li><a href="https://github.com/pallavsharmaofficial/PhoneSaar">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/site.js" defer></script>
 </body>
 </html>
