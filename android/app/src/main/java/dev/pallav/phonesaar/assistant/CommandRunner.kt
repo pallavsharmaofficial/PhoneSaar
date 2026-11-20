@@ -69,9 +69,10 @@ class CommandRunner(
         launch(Intent(Intent.ACTION_DIAL, number?.let { Uri.fromParts("tel", it, null) }))
 
     private suspend fun call(cmd: Command.Call): Reply {
-        if (cmd.number != null) {
-            dial(cmd.number)
-            return Reply(s(R.string.asst_reply_dialer_number, cmd.number))
+        val number = cmd.number
+        if (number != null) {
+            dial(number)
+            return Reply(s(R.string.asst_reply_dialer_number, number))
         }
         val name = cmd.name
         if (name == null) {
