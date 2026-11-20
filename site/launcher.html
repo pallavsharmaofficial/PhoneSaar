@@ -4,83 +4,197 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0d0a3a">
   <title>PhoneSaar Launcher: your phone, your design</title>
   <meta name="description" content="A free Android home screen you design yourself: an app sphere ranked by what you use, notifications your way, Hindi and English voice, and a live design.json.">
   <link rel="canonical" href="https://pallavsharmaofficial.github.io/PhoneSaar/launcher.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PhoneSaar Launcher: your phone, your design">
+  <meta property="og:description" content="A free Android home screen you design yourself: an app sphere ranked by use, notifications your way, Hindi and English voice.">
+  <meta property="og:url" content="https://pallavsharmaofficial.github.io/PhoneSaar/launcher.html">
+  <meta property="og:image" content="https://pallavsharmaofficial.github.io/PhoneSaar/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PhoneSaar Launcher: your phone, your design">
+  <meta name="twitter:description" content="A free Android home screen you design yourself, with Hindi and English voice.">
+  <meta name="twitter:image" content="https://pallavsharmaofficial.github.io/PhoneSaar/img/og.jpg">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="launcher.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+    </defs>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 2 5 13.5h5.5L9.5 22 19 9.5h-5.8z"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H4zM9 20h6M12 16v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="m4 18 5-5 4 4 3-3 4 4"/></g></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11m0-1V4.5a1.5 1.5 0 0 1 3 0V11m0-4.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-.5A6 6 0 0 1 5 16.5L3.7 13a1.5 1.5 0 0 1 2.6-1.4L8 14"/></g></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></g></symbol>
+    <symbol id="i-widget" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="9" rx="3"/><path d="M7 18h10"/></g></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0 5 5L9 22l-3-3zM6 3l3 3-2 2-3-3z"/></g></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 14 4-5"/></g></symbol>
+    <symbol id="i-wifioff" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.800a15 15 0 0 1 20 0M5 12.500a10 10 0 0 1 14 0M8.500 16a5 5 0 0 1 7 0M12 19.500h.01M3 3l18 18"/></g></symbol>
+      <symbol id="i-sphere" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17v-6a6 6 0 0 1 12 0v6l1.500 2h-15zM10 21h4"/></g></symbol>
+  </svg>
+
+  <a class="skip" href="#main" data-hi="सीधे मुख्य भाग पर जाएँ">Skip to content</a>
+
   <header class="nav">
-    <a class="brand" href="./">Phone<em>Saar</em></a>
-    <a class="btn" href="#download">Download</a>
-  </header>
-  <main>
-    <section class="l-hero">
-      <div>
-        <h1>Your phone, your design.</h1>
-        <p class="lead">PhoneSaar Launcher is a home screen you shape yourself: clean cards or a spinning sphere of your apps, your notifications where you want them, and a voice that understands हिन्दी and English. Everything stays on the phone.</p>
-        <div class="cta">
-          <a class="btn btn-primary" id="download" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk">Download launcher <span class="size">&nbsp;(about 2.5 MB)</span></a>
-          <a class="btn" href="#design">Design your own</a>
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="PhoneSaar home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><path fill="#fff" d="M17.800 5 8 18h6.200L13 27l10-13.500h-6.300z"/></svg>
+        <span>Phone<em>Saar</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="hide-m" href="./#features" data-hi="खूबियाँ">Features</a>
+        <a class="hide-m" href="./#safety" data-hi="सुरक्षा">Safety</a>
+        <a class="hide-m" href="launcher.html" aria-current="page">Launcher</a>
+        <a class="keep" href="#download" data-hi="डाउनलोड">Download</a>
+        <a class="hide-m" href="./app/" data-hi="वेब ऐप खोलें">Open web app</a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हिं</button>
         </div>
-        <p class="fine">Android 8.0 or newer. It is a normal app: you can switch back to your old home screen at any time.</p>
-      </div>
-      <img class="shot" src="launcher/mono-cards.png" alt="The Mono Cards home screen: clock, weather, photo, music, battery and mood, app list, calendar and dock in white cards" width="320">
-    </section>
+      </nav>
+    </div>
+  </header>
 
-    <section class="section">
-      <h2>What it does</h2>
-      <div class="grid">
-        <div class="card"><h3>Sphere by use</h3><p>Your apps float on a 3D sphere. The ones you use most are biggest and in front. Drag to spin, tap to open, hold for app info, hide or pin.</p></div>
-        <div class="card"><h3>Notifications your way</h3><p>A feed grouped by app: tap to open, swipe to dismiss, reply in place, read aloud. Badges on your icons.</p></div>
-        <div class="card"><h3>हिन्दी and English voice</h3><p>Say "WhatsApp kholo", "torch on", "subah 6 baje alarm", "theme neon lagao" or "reply to WhatsApp saying okay". Typed in the search bar it works the same.</p></div>
-        <div class="card"><h3>Design it yourself</h3><p>Pick a theme, drag blocks around, change colours and fonts, or edit one text file and watch your phone update live.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Looks</h2>
-      <div class="shots">
-        <figure><img class="shot" src="launcher/edit-mode.png" alt="Edit mode with a block selected and the toolbar" loading="lazy"><figcaption>Edit the home screen in place</figcaption></figure>
-        <figure><img class="shot" src="launcher/themes.png" alt="The themes gallery with live previews" loading="lazy"><figcaption>Themes with live previews</figcaption></figure>
-        <figure><img class="shot" src="launcher/sphere.png" alt="The Sphere theme with apps on a 3D sphere" loading="lazy"><figcaption>Sphere, ranked by use</figcaption></figure>
-        <figure><img class="shot" src="launcher/neon.png" alt="The Neon theme" loading="lazy"><figcaption>Neon</figcaption></figure>
-        <figure><img class="shot" src="launcher/paper.png" alt="The Paper theme" loading="lazy"><figcaption>Paper</figcaption></figure>
-        <figure><img class="shot" src="launcher/minimal.png" alt="The Minimal theme" loading="lazy"><figcaption>Minimal</figcaption></figure>
-        <figure><img class="shot" src="launcher/drawer.png" alt="The app drawer with a fast scroller" loading="lazy"><figcaption>Swipe-up app drawer</figcaption></figure>
-        <figure><img class="shot" src="launcher/notifications.png" alt="The notification feed on the Sphere theme" loading="lazy"><figcaption>Notifications on home</figcaption></figure>
+  <main id="main">
+    <section class="hero">
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow" data-hi="PhoneSaar लॉन्चर">PhoneSaar Launcher</p>
+          <h1><span data-hi="आपका फ़ोन,">Your phone,</span> <span class="grad-text" data-hi="आपका डिज़ाइन।">your design.</span></h1>
+          <p class="lead" data-hi="PhoneSaar लॉन्चर ऐसी होम स्क्रीन है जिसे आप खुद ढालते हैं: साफ़ कार्ड या आपके ऐप का घूमता गोला, नोटिफ़िकेशन जहाँ आप चाहें, और ऐसी आवाज़ जो हिन्दी और English समझती है। सब कुछ फ़ोन पर ही रहता है।">PhoneSaar Launcher is a home screen you shape yourself: clean cards or a spinning sphere of your apps, your notifications where you want them, and a voice that understands हिन्दी and English. Everything stays on the phone.</p>
+          <div class="cta">
+            <a class="btn btn-primary btn-lg" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk"><svg aria-hidden="true"><use href="#i-down"/></svg><span data-hi="लॉन्चर डाउनलोड करें">Download launcher</span></a>
+            <a class="btn btn-ghost btn-lg" href="#design" data-hi="अपना डिज़ाइन बनाएँ">Design your own</a>
+          </div>
+          <p class="fine" data-hi="लगभग 2.5 MB, Android 8.0 या नया। यह एक आम ऐप है: आप जब चाहें अपनी पुरानी होम स्क्रीन पर लौट सकते हैं।">About 2.5 MB, Android 8.0 or newer. It is a normal app: you can switch back to your old home screen at any time.</p>
+        </div>
+        <div class="hero-stage" id="stage">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="device-wrap"><div class="device" style="--w:300px"><div class="screen"><img src="launcher/mono-cards-540.webp" srcset="launcher/mono-cards-360.webp 360w, launcher/mono-cards-540.webp 540w" sizes="300px" width="540" height="960" alt="The Mono Cards home screen: clock, weather, photo, music, battery and mood, app list, calendar and dock in white cards"></div></div></div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="install">
-      <h2>Install</h2>
-      <ol class="steps">
-        <li>On the phone, open this page in <b>Chrome</b> and tap <a href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk"><b>Download launcher</b></a>.</li>
-        <li>Tap <b>Open</b> when it finishes. If asked, allow <b>Install unknown apps</b> for Chrome, then tap <b>Install</b>.</li>
-        <li>Open <b>PhoneSaar Launcher</b>, choose your language, and look around before making it your Home app.</li>
-      </ol>
-    </section>
-
-    <section class="section">
-      <h2>Make it your Home app</h2>
-      <ol class="steps">
-        <li>In the launcher, tap <b>Set as Home app</b> (or Settings, <b>Make PhoneSaar Launcher my Home app</b>) and choose it in the box Android shows.</li>
-        <li>On <b>Xiaomi, Redmi and POCO (HyperOS or MIUI)</b> the box can be missing: open <b>Settings, Apps, Default apps, Home screen</b> and pick <b>PhoneSaar Launcher</b>.</li>
-        <li>Press the Home button. You are on your new home screen.</li>
-      </ol>
-      <div class="note">
-        <h3>An honest note for HyperOS and MIUI</h3>
-        <p>On some Xiaomi builds, full-screen gestures fall back to the three navigation buttons when a third-party launcher is the Home app. That is decided by the system, not by the launcher.</p>
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-hi="खूबियाँ">What it does</p>
+          <h2 data-hi="एक होम स्क्रीन, जो आपकी तरह चले।">A home screen that works your way.</h2>
+        </div>
+        <div class="promise-grid">
+          <div class="card reveal"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-sphere"/></svg></div><h3 data-hi="इस्तेमाल के हिसाब से स्फ़ीयर">Sphere by use</h3><p data-hi="आपके ऐप 3D गोले पर तैरते हैं। जो सबसे ज़्यादा चलाते हैं वे सबसे बड़े और आगे होते हैं। घुमाने के लिए खींचिए, खोलने के लिए टैप कीजिए, ऐप की जानकारी, छिपाने या पिन करने के लिए देर तक दबाइए।">Your apps float on a 3D sphere. The ones you use most are biggest and in front. Drag to spin, tap to open, hold for app info, hide or pin.</p></div>
+          <div class="card reveal"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-bell"/></svg></div><h3 data-hi="नोटिफ़िकेशन आपके तरीके से">Notifications your way</h3><p data-hi="ऐप के हिसाब से बँटी सूची: खोलने के लिए टैप, हटाने के लिए स्वाइप, वहीं जवाब, और ज़ोर से पढ़कर सुनाना। आइकन पर बैज भी।">A feed grouped by app: tap to open, swipe to dismiss, reply in place, read aloud. Badges on your icons.</p></div>
+          <div class="card reveal"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-mic"/></svg></div><h3 data-hi="हिन्दी और English आवाज़">हिन्दी and English voice</h3><p data-hi="बोलिए &quot;WhatsApp kholo&quot;, &quot;torch on&quot;, &quot;subah 6 baje alarm&quot;, &quot;theme neon lagao&quot; या &quot;reply to WhatsApp saying okay&quot;। सर्च बार में लिखने पर भी यही चलता है।">Say "WhatsApp kholo", "torch on", "subah 6 baje alarm", "theme neon lagao" or "reply to WhatsApp saying okay". Typed in the search bar it works the same.</p></div>
+          <div class="card reveal"><div class="icon-badge"><svg aria-hidden="true"><use href="#i-widget"/></svg></div><h3 data-hi="अपना डिज़ाइन खुद बनाइए">Design it yourself</h3><p data-hi="थीम चुनिए, ब्लॉक खींचकर रखिए, रंग और फ़ॉन्ट बदलिए, या एक टेक्स्ट फ़ाइल बदलिए और फ़ोन को उसी समय बदलते देखिए।">Pick a theme, drag blocks around, change colours and fonts, or edit one text file and watch your phone update live.</p></div>
+        </div>
       </div>
-      <h3>Going back to your old launcher</h3>
-      <p>Open <b>Settings, Apps, Default apps, Home screen</b> (the launcher also has a <b>Go back to my old launcher</b> button in its settings) and pick your old one. Nothing is lost; uninstalling the launcher also works.</p>
     </section>
 
-    <section class="section" id="design">
-      <h2>Design your own</h2>
-      <p>Every look is one <code>design.json</code>: colours, fonts, corner radius, shadows, the blocks on the screen and where they sit. Edit it on your computer and the phone redraws in about a second; or change things on the phone itself and the same file is updated. Bad values never crash it: each one falls back and shows up in a small "design warnings" chip.</p>
-<pre class="code"><code># one-time: make it the Home app and give it usage and notification access
+    <section class="section alt" id="looks">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <p class="eyebrow" data-hi="लुक">Looks</p>
+          <h2 data-hi="नौ तस्वीरें, असली लॉन्चर की।">Nine screens from the real launcher.</h2>
+          <p class="lead" data-hi="थीम, एडिट मोड, ऐप ड्रॉअर और नोटिफ़िकेशन।">Themes, edit mode, the app drawer and notifications.</p>
+        </div>
+        <div class="looks" tabindex="0" role="region" aria-label="Launcher screenshots">
+          <figure class="look reveal" style="--d:0.00s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/mono-cards-540.webp" srcset="launcher/mono-cards-360.webp 360w, launcher/mono-cards-540.webp 540w" sizes="230px" width="540" height="960" alt="The Mono Cards home screen: clock, weather, photo, music, battery and mood, app list, calendar and dock in white cards"></div></div></div><figcaption data-hi="मोनो कार्ड">Mono Cards</figcaption></figure>
+          <figure class="look reveal" style="--d:0.08s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/sphere-540.webp" srcset="launcher/sphere-360.webp 360w, launcher/sphere-540.webp 540w" sizes="230px" width="540" height="960" alt="The Sphere theme with apps on a 3D sphere"></div></div></div><figcaption data-hi="स्फ़ीयर, इस्तेमाल के हिसाब से">Sphere, ranked by use</figcaption></figure>
+          <figure class="look reveal" style="--d:0.16s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/neon-540.webp" srcset="launcher/neon-360.webp 360w, launcher/neon-540.webp 540w" sizes="230px" width="540" height="960" alt="The Neon theme"></div></div></div><figcaption data-hi="नियॉन">Neon</figcaption></figure>
+          <figure class="look reveal" style="--d:0.00s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/paper-540.webp" srcset="launcher/paper-360.webp 360w, launcher/paper-540.webp 540w" sizes="230px" width="540" height="960" alt="The Paper theme"></div></div></div><figcaption data-hi="पेपर">Paper</figcaption></figure>
+          <figure class="look reveal" style="--d:0.08s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/minimal-540.webp" srcset="launcher/minimal-360.webp 360w, launcher/minimal-540.webp 540w" sizes="230px" width="540" height="960" alt="The Minimal theme"></div></div></div><figcaption data-hi="मिनिमल">Minimal</figcaption></figure>
+          <figure class="look reveal" style="--d:0.16s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/themes-540.webp" srcset="launcher/themes-360.webp 360w, launcher/themes-540.webp 540w" sizes="230px" width="540" height="960" alt="The themes gallery with live previews"></div></div></div><figcaption data-hi="लाइव प्रिव्यू के साथ थीम">Themes with live previews</figcaption></figure>
+          <figure class="look reveal" style="--d:0.00s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/edit-mode-540.webp" srcset="launcher/edit-mode-360.webp 360w, launcher/edit-mode-540.webp 540w" sizes="230px" width="540" height="960" alt="Edit mode with a block selected and the toolbar"></div></div></div><figcaption data-hi="होम स्क्रीन को वहीं बदलें">Edit the home screen in place</figcaption></figure>
+          <figure class="look reveal" style="--d:0.08s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/drawer-540.webp" srcset="launcher/drawer-360.webp 360w, launcher/drawer-540.webp 540w" sizes="230px" width="540" height="960" alt="The app drawer with a fast scroller"></div></div></div><figcaption data-hi="ऊपर स्वाइप करने पर ऐप ड्रॉअर">Swipe-up app drawer</figcaption></figure>
+          <figure class="look reveal" style="--d:0.16s"><div class="device-wrap"><div class="device still" style="--w:230px"><div class="screen"><img loading="lazy" src="launcher/notifications-540.webp" srcset="launcher/notifications-360.webp 360w, launcher/notifications-540.webp 540w" sizes="230px" width="540" height="960" alt="The notification feed on the Sphere theme"></div></div></div><figcaption data-hi="होम पर नोटिफ़िकेशन">Notifications on home</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-hi="इंस्टॉल">Install</p>
+          <h2 data-hi="लॉन्चर इंस्टॉल करें">Install the launcher</h2>
+        </div>
+        <div class="download">
+          <div class="dl-card reveal from-l">
+            <h3 data-hi="PhoneSaar लॉन्चर">PhoneSaar Launcher</h3>
+            <ul class="dl-meta">
+              <li class="chip"><span data-hi="लगभग 2.5 MB">About 2.5 MB</span></li>
+              <li class="chip"><span data-hi="Android 8.0 या नया">Android 8.0 or newer</span></li>
+            </ul>
+            <p data-hi="फ़ोन पर यह पेज Chrome में खोलिए और नीचे का बटन दबाइए।">Open this page in Chrome on your phone and tap the button.</p>
+            <a class="btn btn-primary btn-lg" href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk"><svg aria-hidden="true"><use href="#i-down"/></svg><span data-hi="लॉन्चर डाउनलोड करें (लगभग 2.5 MB)">Download launcher (about 2.5 MB)</span></a>
+          </div>
+          <div class="reveal from-r">
+            <ol class="steps">
+              <li><b data-hi="डाउनलोड।">Download.</b> <span data-hi="फ़ोन पर इस पेज को Chrome में खोलिए और Download launcher दबाइए।">On the phone, open this page in <b>Chrome</b> and tap <a href="https://github.com/pallavsharmaofficial/PhoneSaar/releases/download/latest/phonesaar-launcher.apk"><b>Download launcher</b></a>.</span></li>
+              <li><b data-hi="इंस्टॉल।">Install.</b> <span data-hi="डाउनलोड पूरा होने पर Open दबाइए। अगर फ़ोन पूछे, तो Chrome के लिए Install unknown apps की अनुमति दीजिए, फिर Install दबाइए।">Tap <b>Open</b> when it finishes. If asked, allow <b>Install unknown apps</b> for Chrome, then tap <b>Install</b>.</span></li>
+              <li><b data-hi="खोलकर देखिए।">Look around.</b> <span data-hi="PhoneSaar Launcher खोलिए, भाषा चुनिए, और इसे होम ऐप बनाने से पहले घूमकर देख लीजिए।">Open <b>PhoneSaar Launcher</b>, choose your language, and look around before making it your Home app.</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="home-app">
+      <div class="wrap two-col">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-hi="होम ऐप">Home app</p>
+          <h2 data-hi="इसे अपनी होम स्क्रीन बनाइए">Make it your Home app</h2>
+        </div>
+        <div class="reveal">
+          <ol class="steps">
+            <li data-hi="लॉन्चर में Set as Home app दबाइए (या Settings में Make PhoneSaar Launcher my Home app) और Android के डिब्बे में इसे चुनिए।">In the launcher, tap <b>Set as Home app</b> (or Settings, <b>Make PhoneSaar Launcher my Home app</b>) and choose it in the box Android shows.</li>
+            <li data-hi="<b>Xiaomi, Redmi और POCO (HyperOS या MIUI)</b> पर यह डिब्बा न दिखे तो <b>Settings, Apps, Default apps, Home screen</b> खोलिए और <b>PhoneSaar Launcher</b> चुनिए।">On <b>Xiaomi, Redmi and POCO (HyperOS or MIUI)</b> the box can be missing: open <b>Settings, Apps, Default apps, Home screen</b> and pick <b>PhoneSaar Launcher</b>.</li>
+            <li data-hi="Home बटन दबाइए। आप अपनी नई होम स्क्रीन पर हैं।">Press the Home button. You are on your new home screen.</li>
+          </ol>
+          <div class="note">
+            <h3 data-hi="HyperOS और MIUI के बारे में एक सच्ची बात">An honest note for HyperOS and MIUI</h3>
+            <p data-hi="कुछ Xiaomi फ़ोन पर, थर्ड-पार्टी लॉन्चर होम ऐप हो तो फ़ुल-स्क्रीन जेस्चर की जगह तीन नेविगेशन बटन आ जाते हैं। यह सिस्टम तय करता है, लॉन्चर नहीं।">On some Xiaomi builds, full-screen gestures fall back to the three navigation buttons when a third-party launcher is the Home app. That is decided by the system, not by the launcher.</p>
+          </div>
+          <div class="acc" style="margin-top:22px">
+            <details>
+              <summary data-hi="अपने पुराने लॉन्चर पर वापस जाना">Going back to your old launcher</summary>
+              <div class="acc-body">
+                <p data-hi="<b>Settings, Apps, Default apps, Home screen</b> खोलिए (लॉन्चर की सेटिंग में <b>Go back to my old launcher</b> बटन भी है) और अपना पुराना लॉन्चर चुनिए। कुछ खोता नहीं; लॉन्चर को अनइंस्टॉल करना भी चलता है।">Open <b>Settings, Apps, Default apps, Home screen</b> (the launcher also has a <b>Go back to my old launcher</b> button in its settings) and pick your old one. Nothing is lost; uninstalling the launcher also works.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section on-night" id="design">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-hi="डिज़ाइन">Design</p>
+          <h2 data-hi="अपना डिज़ाइन बनाइए">Design your own</h2>
+          <p class="lead" data-hi="हर लुक एक <code>design.json</code> है: रंग, फ़ॉन्ट, कोनों की गोलाई, छाया, स्क्रीन के ब्लॉक और उनकी जगह। इसे कंप्यूटर पर बदलिए और फ़ोन लगभग एक सेकंड में बदल जाता है; या फ़ोन पर ही बदलिए और वही फ़ाइल अपडेट हो जाती है। गलत मान कभी ऐप नहीं गिराते: हर एक अपने आप पुराने मान पर लौटता है और एक छोटे “design warnings” चिप में दिखता है।">Every look is one <code>design.json</code>: colours, fonts, corner radius, shadows, the blocks on the screen and where they sit. Edit it on your computer and the phone redraws in about a second; or change things on the phone itself and the same file is updated. Bad values never crash it: each one falls back and shows up in a small &ldquo;design warnings&rdquo; chip.</p>
+        </div>
+        <div class="reveal">
+<pre class="code" tabindex="0"><code># one-time: make it the Home app and give it usage and notification access
 tools/launcher-design.sh grant
 tools/launcher-design.sh home
 
@@ -89,20 +203,45 @@ tools/launcher-design.sh watch my.json
 
 tools/launcher-design.sh preset neon        # switch built-in themes
 tools/launcher-design.sh screenshot out.png</code></pre>
-      <p>The script needs only <code>adb</code> and Wireless or USB debugging. The full list of keys, with examples, is in <a href="https://github.com/pallavsharmaofficial/PhoneSaar/blob/main/android/launcher/DESIGN.md">DESIGN.md</a>.</p>
+          <p class="fine" data-hi="स्क्रिप्ट को सिर्फ़ <code>adb</code> और Wireless या USB debugging चाहिए। सभी keys की पूरी सूची और उदाहरण <a href=&quot;https://github.com/pallavsharmaofficial/PhoneSaar/blob/main/android/launcher/DESIGN.md&quot;>DESIGN.md</a> में हैं।">The script needs only <code>adb</code> and Wireless or USB debugging. The full list of keys, with examples, is in <a href="https://github.com/pallavsharmaofficial/PhoneSaar/blob/main/android/launcher/DESIGN.md">DESIGN.md</a>.</p>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="privacy">
-      <h2>Privacy</h2>
-      <ul>
-        <li>It works offline. The only thing that ever goes online is the <b>weather</b> card, and only if you turn it on: the city name you type (or your rounded, coarse location if you choose that) goes to Open-Meteo to get the temperature. You can switch the card off.</li>
-        <li><b>Notification access</b> lets the launcher show your notifications on the home screen and read them aloud. The content stays on the phone, is not stored and is never sent anywhere.</li>
-        <li><b>Usage access</b> lets the launcher count how often you open apps so the sphere can put them in order. The counts stay on the phone.</li>
-        <li>Voice uses your phone's own speech recognizer, offline where your phone supports it. Photos are chosen with Android's Photo Picker, so the launcher never gets storage access.</li>
-        <li>Contacts, calendar and location permissions are asked only when you use the feature that needs them.</li>
-      </ul>
+      <div class="wrap two-col">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-hi="प्राइवेसी">Privacy</p>
+          <h2 data-hi="आपका डेटा फ़ोन पर ही रहता है।">Your data stays on the phone.</h2>
+        </div>
+        <ul class="tick-list reveal">
+          <li data-hi="यह इंटरनेट के बिना चलता है। सिर्फ़ <b>मौसम</b> कार्ड ऑनलाइन जाता है, और तभी जब आप उसे चालू करें: आपका लिखा शहर का नाम (या, अगर आप चुनें, आपकी मोटी-सी लोकेशन) तापमान जानने के लिए Open-Meteo को जाता है। आप कार्ड बंद कर सकते हैं।">It works offline. The only thing that ever goes online is the <b>weather</b> card, and only if you turn it on: the city name you type (or your rounded, coarse location if you choose that) goes to Open-Meteo to get the temperature. You can switch the card off.</li>
+          <li data-hi="<b>Notification access</b> से लॉन्चर आपके नोटिफ़िकेशन होम स्क्रीन पर दिखा और पढ़कर सुना सकता है। सामग्री फ़ोन पर ही रहती है, सेव नहीं होती और कहीं भेजी नहीं जाती।"><b>Notification access</b> lets the launcher show your notifications on the home screen and read them aloud. The content stays on the phone, is not stored and is never sent anywhere.</li>
+          <li data-hi="<b>Usage access</b> से लॉन्चर गिन पाता है कि आप ऐप कितनी बार खोलते हैं, ताकि गोले में ऐप क्रम से लगें। गिनती फ़ोन पर ही रहती है।"><b>Usage access</b> lets the launcher count how often you open apps so the sphere can put them in order. The counts stay on the phone.</li>
+          <li data-hi="आवाज़ के लिए आपके फ़ोन का अपना स्पीच रिकग्नाइज़र चलता है, जहाँ फ़ोन सपोर्ट करे वहाँ बिना इंटरनेट के। फ़ोटो Android के Photo Picker से चुनी जाती हैं, इसलिए लॉन्चर को स्टोरेज की अनुमति नहीं मिलती।">Voice uses your phone's own speech recognizer, offline where your phone supports it. Photos are chosen with Android's Photo Picker, so the launcher never gets storage access.</li>
+          <li data-hi="कॉन्टैक्ट, कैलेंडर और लोकेशन की अनुमति तभी माँगी जाती है जब आप वह फ़ीचर इस्तेमाल करें।">Contacts, calendar and location permissions are asked only when you use the feature that needs them.</li>
+        </ul>
+      </div>
     </section>
   </main>
-  <footer>Everything runs on your device. <a href="./">PhoneSaar</a> &middot; <a href="privacy.html">Privacy</a></footer>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <a class="brand" href="./" aria-label="PhoneSaar home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg)"/><path fill="#fff" d="M17.800 5 8 18h6.200L13 27l10-13.500h-6.300z"/></svg>
+          <span>Phone<em>Saar</em></span>
+        </a>
+        <p data-hi="सब कुछ आपके डिवाइस पर चलता है और कुछ भी अपलोड नहीं होता।">Everything runs on your device and nothing is uploaded.</p>
+      </div>
+      <ul>
+        <li><a href="./">PhoneSaar</a></li>
+        <li><a href="launcher.html">Launcher</a></li>
+        <li><a href="privacy.html" data-hi="प्राइवेसी">Privacy</a></li>
+        <li><a href="https://github.com/pallavsharmaofficial/PhoneSaar">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/site.js" defer></script>
 </body>
 </html>
