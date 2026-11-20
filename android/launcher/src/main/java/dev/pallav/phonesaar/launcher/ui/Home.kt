@@ -163,6 +163,9 @@ private fun GridHome(d: Design, env: Env, prefs: Prefs, sphereApps: List<AppInfo
                                 val col = (cx / with(density) { (colW + gap).toPx() }).toInt()
                                 val row = (cy / with(density) { (unit + gap).toPx() }).toInt()
                                 DesignStore.edit { de -> de.copy(layout = de.layout.copy(blocks = Reorder.move(de.layout.blocks, p.index, col, row, l.columns))) }
+                                // The moved block may have a new index; keep it selected.
+                                val moved = gridBlocks[p.index]
+                                edit.onSelect(DesignStore.state.value.design.layout.blocks.indexOfFirst { it.type == moved.type && it.opts == moved.opts })
                             }, dragOffset = { drag = Pair(p.index, it) })
                         }
                     }
@@ -171,12 +174,10 @@ private fun GridHome(d: Design, env: Env, prefs: Prefs, sphereApps: List<AppInfo
         }
         for ((i, b) in docks) Box(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 8.dp)) {
             Box { BlockContent(b, d, env, sphereApps, prefs, Modifier.fillMaxWidth()); DesignOverlay(b, designMode) }
-            if (edit.on) Box(Modifier.matchParentSizeCompat().pointerInput(i) { detectTapGestures { edit.onSelect(i) } }.then(if (edit.selected == i) Modifier.border(2.dp, Color(0xFF2D6BFF), RoundedCornerShape(10.dp)) else Modifier))
+            if (edit.on) Box(Modifier.matchParentSize().pointerInput(i) { detectTapGestures { edit.onSelect(i) } }.then(if (edit.selected == i) Modifier.border(2.dp, Color(0xFF2D6BFF), RoundedCornerShape(10.dp)) else Modifier))
         }
     }
 }
-
-private fun Modifier.matchParentSizeCompat(): Modifier = this.fillMaxSize()
 
 @Composable
 private fun VerticalHome(d: Design, env: Env, prefs: Prefs, sphereApps: List<AppInfo>, designMode: Boolean, edit: EditState) {
@@ -188,7 +189,7 @@ private fun VerticalHome(d: Design, env: Env, prefs: Prefs, sphereApps: List<App
             Box(m) {
                 BlockContent(b, d, env, sphereApps, prefs, Modifier.fillMaxSize().let { if (b.weight > 0f || b.type == "sphere") it else Modifier.fillMaxWidth() })
                 DesignOverlay(b, designMode)
-                if (edit.on) Box(Modifier.matchParentSizeCompat().pointerInput(i) { detectTapGestures { edit.onSelect(i) } }.then(if (edit.selected == i) Modifier.border(2.dp, Color(0xFF2D6BFF), RoundedCornerShape(10.dp)) else Modifier.border(1.dp, Color(0x552D6BFF), RoundedCornerShape(10.dp))))
+                if (edit.on) Box(Modifier.matchParentSize().pointerInput(i) { detectTapGestures { edit.onSelect(i) } }.then(if (edit.selected == i) Modifier.border(2.dp, Color(0xFF2D6BFF), RoundedCornerShape(10.dp)) else Modifier.border(1.dp, Color(0x552D6BFF), RoundedCornerShape(10.dp))))
             }
         }
     }

@@ -78,14 +78,22 @@ object IconCache {
         val p = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
         val inner = (SIZE * 0.24f)
         val dst = RectF(inner, inner, SIZE - inner, SIZE - inner)
+        val mono = if (Build.VERSION.SDK_INT >= 33 && d is AdaptiveIconDrawable) d.monochrome else null
+        var silhouette: Bitmap? = null
         if (d is AdaptiveIconDrawable) {
-            val mono = if (Build.VERSION.SDK_INT >= 33) d.monochrome else null
-            // Foreground layers are 108dp with a 72dp safe zone, so draw the full layer into a box 1.5x larger and centre it.
-            val layer = mono ?: d.foreground
-            val big = draw(layer, (SIZE * 1.5f).toInt())
+            // Foreground layers are 108dp with a 72dp safe zone, so draw the full layer into a box 1.5x larger and take the centre.
+            val big = draw(mono ?: d.foreground, (SIZE * 1.5f).toInt())
             val crop = Bitmap.createBitmap(big, SIZE / 4, SIZE / 4, SIZE, SIZE)
+            val s32 = Bitmap.createScaledBitmap(crop, 32, 32, true)
+            var solid = 0
+            for (y in 0 until 32) for (x in 0 until 32) if ((s32.getPixel(x, y) ushr 24) > 128) solid++
+            val cover = solid / 1024f
+            // A glyph that is empty or fills the whole tile makes a blank or white blob, so those fall back to the grey icon.
+            if (mono != null || cover in 0.03f..0.85f) silhouette = crop
+        }
+        if (silhouette != null) {
             p.colorFilter = white
-            c.drawBitmap(crop, null, dst, p)
+            c.drawBitmap(silhouette, null, dst, p)
         } else {
             val gray = Bitmap.createBitmap(SIZE, SIZE, Bitmap.Config.ARGB_8888)
             val cm = ColorMatrix().apply { setSaturation(0f) }

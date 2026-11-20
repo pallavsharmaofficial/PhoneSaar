@@ -77,10 +77,9 @@ fun DrawerScreen(d: Design, prefs: Prefs, env: Env, initialQuery: String, onClos
     val scope = rememberCoroutineScope()
     val focus = remember { FocusRequester() }
     val badges = if (d.features.badges && prefs.badges) NotifStore.counts() else emptyMap()
-    LaunchedEffect(initialQuery) { if (initialQuery.isEmpty()) runCatching { focus.requestFocus() } }
     val letters = remember(rows) { rows.filterIsInstance<Row2.Header>().map { it.text }.takeIf { !byCategory }.orEmpty() }
     Box(
-        Modifier.fillMaxSize().background(if (t.bgMode == BgMode.WALLPAPER) t.bgColor.c().copy(alpha = 0.94f) else t.bgColor.c().copy(alpha = 0.98f))
+        Modifier.fillMaxSize().background(if (t.bgMode == BgMode.WALLPAPER) t.bgColor.c().copy(alpha = 0.985f) else t.bgColor.c())
             .pointerInput(Unit) { detectVerticalDragGestures { _, _ -> } },
     ) {
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.systemBars).padding(horizontal = 16.dp)) {

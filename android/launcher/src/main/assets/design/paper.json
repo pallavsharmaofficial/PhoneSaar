@@ -2,7 +2,7 @@
   "name": "Paper",
   "theme": {
     "background": "solid", "backgroundColor": "#F4EFE6",
-    "accent": "#8B4513", "text": "#2B2118", "textDim": "#7A6A58", "surface": "#FFFFFFCC",
+    "accent": "#8B4513", "text": "#2B2118", "textDim": "#7A6A58", "surface": "#CCFFFFFF",
     "fonts": { "clock": "baskerville", "display": "baskerville", "body": "inter" },
     "cornerRadius": 10, "blur": false, "shadow": 0.25, "iconShape": "squircle", "lightStatusIcons": false
   },

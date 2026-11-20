@@ -90,7 +90,7 @@ import java.util.Locale
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
-private val CARDLESS = setOf("greeting", "sphere", "spacer", "photo")
+private val CARDLESS = setOf("greeting", "sphere", "spacer", "photo", "notifications")
 
 fun usesCard(b: Block, d: Design): Boolean = when {
     b.type in CARDLESS -> false

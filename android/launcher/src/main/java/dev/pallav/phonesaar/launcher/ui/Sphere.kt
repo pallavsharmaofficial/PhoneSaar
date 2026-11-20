@@ -14,6 +14,7 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -73,12 +74,12 @@ fun SphereView(apps: List<AppInfo>, d: Design, badges: Map<String, Int>, env: En
     val badgeText = remember { Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFFFFFFFF.toInt(); textAlign = Paint.Align.CENTER; typeface = Typeface.DEFAULT_BOLD } }
     var size by remember { androidx.compose.runtime.mutableStateOf(IntSize.Zero) }
     fun projected(): List<dev.pallav.phonesaar.launcher.sphere.Projected> {
-        val r = size.width * sd.radiusFraction
+        val r = radiusOf(size.width.toFloat(), size.height.toFloat(), sd.radiusFraction)
         return SphereMath.projectAll(points, state.rot, r, size.width / 2f, size.height / 2f, sd.perspective)
     }
     val tracker = remember { VelocityTracker() }
     Canvas(
-        modifier.fillMaxSize()
+        modifier.fillMaxSize().clipToBounds()
             .pointerInput(items, size) {
                 detectTapGestures(
                     onTap = { o -> SphereMath.hitTest(projected(), sizesPx, o.x, o.y)?.let { env.launch(items[it]) } },
@@ -89,13 +90,13 @@ fun SphereView(apps: List<AppInfo>, d: Design, badges: Map<String, Int>, env: En
                 detectDragGestures(
                     onDragStart = { state.stopMotion(); tracker.resetTracking(); dragging = 1L },
                     onDragEnd = {
-                        val v = tracker.calculateVelocity(); val r = (size.width * sd.radiusFraction).coerceAtLeast(1f)
+                        val v = tracker.calculateVelocity(); val r = radiusOf(size.width.toFloat(), size.height.toFloat(), sd.radiusFraction).coerceAtLeast(1f)
                         state.fling(v.x / r, v.y / r); dragging = 0L
                     },
                     onDragCancel = { dragging = 0L },
                 ) { change, drag ->
                     change.consume(); tracker.addPosition(change.uptimeMillis, change.position)
-                    val r = (size.width * sd.radiusFraction).coerceAtLeast(1f)
+                    val r = radiusOf(size.width.toFloat(), size.height.toFloat(), sd.radiusFraction).coerceAtLeast(1f)
                     state.drag(drag.x / r, drag.y / r)
                 }
             },
@@ -132,3 +133,6 @@ fun SphereView(apps: List<AppInfo>, d: Design, badges: Map<String, Int>, env: En
 }
 
 private fun Color.toArgb(): Int = android.graphics.Color.argb((alpha * 255).toInt(), (red * 255).toInt(), (green * 255).toInt(), (blue * 255).toInt())
+
+/** Sphere radius: a fraction of the width, but never more than fits the height once perspective grows the near icons. */
+fun radiusOf(w: Float, h: Float, fraction: Float): Float = minOf(w * fraction, h * 0.36f)
