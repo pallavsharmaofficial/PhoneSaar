@@ -1,0 +1,18 @@
+{
+  "name": "Minimal",
+  "theme": {
+    "background": "solid", "backgroundColor": "#000000",
+    "accent": "#FFFFFF", "text": "#FFFFFF", "textDim": "#8A8A8A", "surface": "#14FFFFFF",
+    "fonts": { "clock": "default", "display": "default", "body": "default" },
+    "cornerRadius": 4, "blur": false, "iconShape": "none", "lightStatusIcons": true
+  },
+  "layout": [
+    { "type": "spacer", "weight": 1 },
+    { "type": "clock", "size": 88, "align": "start", "date": true, "dateFormat": "EEE, d MMM" },
+    { "type": "greeting", "size": 18 },
+    { "type": "spacer", "weight": 1 },
+    { "type": "favorites", "rows": 4, "cols": 2, "items": ["auto:top8"], "labels": true },
+    { "type": "search", "mic": true }
+  ],
+  "gestures": { "swipeUp": "drawer", "swipeDown": "shade", "doubleTap": "none", "longPress": "settings" }
+}
