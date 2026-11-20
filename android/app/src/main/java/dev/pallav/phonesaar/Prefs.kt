@@ -23,9 +23,24 @@ class Prefs(context: Context) {
         get() = sp.getLong("lastBoostTime", 0L)
         set(v) = sp.edit().putLong("lastBoostTime", v).apply()
 
-    var lastBoostLabel: String
-        get() = sp.getString("lastBoostLabel", "") ?: ""
-        set(v) = sp.edit().putString("lastBoostLabel", v).apply()
+    // "deep" or "quick"; the widget turns it into words in the chosen language.
+    var lastBoostKind: String
+        get() = sp.getString("lastBoostKind", "") ?: ""
+        set(v) = sp.edit().putString("lastBoostKind", v).apply()
+
+    // "hi", "en" or empty for the system language.
+    var language: String
+        get() = sp.getString("language", "") ?: ""
+        set(v) = sp.edit().putString("language", v).apply()
+
+    var welcomed: Boolean
+        get() = sp.getBoolean("welcomed", false)
+        set(v) = sp.edit().putBoolean("welcomed", v).apply()
+
+    // The OEM hint shown when the one-time permission grant was blocked.
+    var secureNote: String
+        get() = sp.getString("secureNote", "") ?: ""
+        set(v) = sp.edit().putString("secureNote", v).apply()
 
     var trimCaches: Boolean
         get() = sp.getBoolean("trimCaches", false)

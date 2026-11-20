@@ -6,8 +6,8 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.text.format.DateUtils
 import android.widget.RemoteViews
+import dev.pallav.phonesaar.core.BoostPath
 import kotlin.concurrent.thread
 
 class BoostWidget : AppWidgetProvider() {
@@ -21,10 +21,11 @@ class BoostWidget : AppWidgetProvider() {
         val pending = goAsync()
         updateAll(context, busy = true)
         thread {
+            var outcome: BoostOutcome? = null
             try {
-                BoostRunner.run(context)
+                outcome = BoostRunner.run(context)
             } finally {
-                updateAll(context)
+                updateAll(context, needsSetup = outcome == BoostOutcome.NeedsSetup)
                 pending.finish()
             }
         }
@@ -33,27 +34,35 @@ class BoostWidget : AppWidgetProvider() {
     companion object {
         const val ACTION_BOOST = "dev.pallav.phonesaar.BOOST"
 
-        fun updateAll(context: Context, busy: Boolean = false) {
+        fun openPowerTools(context: Context): Intent =
+            Intent(context, MainActivity::class.java).putExtra(MainActivity.EXTRA_TAB, MainActivity.TAB_POWER)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+        fun updateAll(context: Context, busy: Boolean = false, needsSetup: Boolean = false) {
             val manager = AppWidgetManager.getInstance(context)
             val ids = manager.getAppWidgetIds(ComponentName(context, BoostWidget::class.java))
             if (ids.isEmpty()) return
+            val c = Loc.wrap(context)
             val prefs = PhoneSaarApp.repo(context).prefs
+            val path = BoostRunner.plannedPath(context)
             val views = RemoteViews(context.packageName, R.layout.widget)
-            views.setTextViewText(R.id.ram, "Free memory ${BoostRunner.freeRamPercent(context)}%")
+            views.setTextViewText(R.id.ram, c.getString(R.string.widget_free, BoostRunner.freeRamPercent(context)))
             val last = prefs.lastBoostTime
             views.setTextViewText(
                 R.id.status,
                 when {
-                    busy -> "Boosting..."
-                    last == 0L -> "Not boosted yet"
-                    else -> "${DateUtils.getRelativeTimeSpanString(last, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)}: ${prefs.lastBoostLabel}"
+                    busy -> c.getString(R.string.widget_boosting)
+                    needsSetup || path == BoostPath.OpenPowerTools -> c.getString(R.string.widget_setup)
+                    last == 0L -> c.getString(R.string.widget_never)
+                    else -> "${Loc.ago(context, last)}: ${BoostRunner.kindLabel(context, prefs.lastBoostKind)}"
                 },
             )
-            val intent = Intent(context, BoostWidget::class.java).setAction(ACTION_BOOST)
-            views.setOnClickPendingIntent(
-                R.id.boost,
-                PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE),
-            )
+            views.setTextViewText(R.id.boost, if (path == BoostPath.OpenPowerTools) c.getString(R.string.widget_open) else c.getString(R.string.boost_button))
+            val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            // A receiver cannot start an activity, so the tap target is chosen when the widget refreshes.
+            val tap = if (path == BoostPath.OpenPowerTools) PendingIntent.getActivity(context, 0, openPowerTools(context), flags)
+            else PendingIntent.getBroadcast(context, 0, Intent(context, BoostWidget::class.java).setAction(ACTION_BOOST), flags)
+            views.setOnClickPendingIntent(R.id.boost, tap)
             manager.updateAppWidget(ids, views)
         }
     }

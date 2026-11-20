@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 
 class AppViewModel(app: Application) : AndroidViewModel(app) {
     val repo = PhoneSaarApp.repo(app)
+
+    private fun str(id: Int, vararg a: Any): String = Loc.wrap(getApplication<Application>()).getString(id, *a)
     private val nsd = Nsd(app) { pairing, host, port ->
         if (pairing) {
             pairPort = port.toString()
@@ -41,6 +43,57 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     var devices by mutableStateOf(repo.prefs.devices)
     var trimCaches by mutableStateOf(repo.prefs.trimCaches)
     var animation by mutableStateOf(repo.prefs.animation)
+    var boosting by mutableStateOf(false)
+    var boostMessage by mutableStateOf<String?>(null)
+    var needsSetup by mutableStateOf(false)
+    var secureGranted by mutableStateOf(Env.hasSecureGrant(app))
+    var secureNote by mutableStateOf(repo.prefs.secureNote)
+    var reconnecting by mutableStateOf(false)
+
+    // Home boost: the best real route; the result is shown in words, never faked.
+    fun homeBoost() {
+        if (boosting) return
+        boosting = true
+        boostMessage = null
+        val app = getApplication<Application>()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val outcome = BoostRunner.run(app)
+                needsSetup = outcome == BoostOutcome.NeedsSetup
+                boostMessage = BoostRunner.describe(app, outcome)
+                syncState()
+                BoostWidget.updateAll(app)
+            } finally {
+                boosting = false
+            }
+        }
+    }
+
+    // Refreshes what the wizard and Home show from the real state.
+    fun syncState() {
+        connected = repo.connected
+        secureGranted = Env.hasSecureGrant(getApplication())
+        secureNote = repo.prefs.secureNote
+    }
+
+    // On opening Power tools, quietly reconnect a phone that was paired before.
+    fun tryReconnect() {
+        if (connected || reconnecting || repo.prefs.selfPort <= 0) return
+        reconnecting = true
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                if (!repo.ensureSelfConnected()) repo.reenableAndConnect()
+                syncState()
+            } finally {
+                reconnecting = false
+            }
+        }
+    }
+
+    fun grantSecure() = work {
+        repo.grantSecureSettings()
+        syncState()
+    }
 
     fun startDiscovery() = nsd.start()
 
@@ -72,36 +125,37 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         val host = if (target == TargetKind.Self) "127.0.0.1" else host_.trim()
         try {
             if (target != TargetKind.Legacy && code.isNotBlank()) {
-                status = "Pairing..."
-                val port = pairPort.toIntOrNull() ?: throw IllegalArgumentException("Type the pairing port shown on the phone.")
-                if (!repo.pair(host, port, code.trim())) throw IllegalStateException("Pairing did not work. Check the code and try again.")
+                status = str(R.string.st_pairing)
+                val port = pairPort.toIntOrNull() ?: throw IllegalArgumentException(str(R.string.st_need_pair_port))
+                if (!repo.pair(host, port, code.trim())) throw IllegalStateException(str(R.string.pair_err_wrong))
             }
-            status = "Connecting..."
+            status = str(R.string.st_connecting)
             val port = if (target == TargetKind.Legacy) connectPort.toIntOrNull() ?: 5555 else
-                connectPort.toIntOrNull() ?: throw IllegalArgumentException("Type the connection port shown on the phone.")
+                connectPort.toIntOrNull() ?: throw IllegalArgumentException(str(R.string.st_need_connect_port))
             connected = repo.connect(host, port)
-            if (!connected) throw IllegalStateException("Could not connect.")
+            if (!connected) throw IllegalStateException(str(R.string.st_connect_failed))
             if (target == TargetKind.Self) {
                 repo.prefs.selfHost = host
                 repo.prefs.selfPort = port
             }
-            val device = SavedDevice("${repo.manufacturer} ${repo.model}".trim(), host, port, target)
-            repo.prefs.devices = (listOf(device) + repo.prefs.devices.filter { it.name != device.name || it.host != host }).take(8)
+            repo.rememberDevice(host, port, target)
             devices = repo.prefs.devices
-            status = "Connected to ${device.name}."
+            status = str(R.string.st_connected, "${repo.manufacturer} ${repo.model}".trim())
+            if (target == TargetKind.Self && !Env.hasSecureGrant(getApplication())) repo.grantSecureSettings()
+            syncState()
             before = repo.report()
             after = null
         } catch (e: AdbPairingRequiredException) {
-            status = "This phone needs pairing first. Turn on Pair with code and enter the code."
+            status = str(R.string.st_needs_pairing)
         } catch (e: Exception) {
-            status = e.message ?: "Could not connect."
+            status = e.message ?: str(R.string.st_connect_failed)
         }
     }
 
     fun disconnect() = work {
         repo.disconnect()
         connected = false
-        status = "Disconnected."
+        status = str(R.string.st_disconnected)
     }
 
     fun useDevice(d: SavedDevice) {

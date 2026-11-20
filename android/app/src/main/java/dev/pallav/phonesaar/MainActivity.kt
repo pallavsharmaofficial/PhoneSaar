@@ -1,57 +1,53 @@
 package dev.pallav.phonesaar
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Tab
-import androidx.compose.material3.Text
-import androidx.compose.material3.lightColorScheme
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 
-private val tabs = listOf("Connect", "Report", "Boost", "Battery", "Debloat", "Fix-ups", "Undo")
-
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     private val vm: AppViewModel by viewModels()
+    private var tab by mutableIntStateOf(0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) route(intent) else tab = savedInstanceState.getInt("tab")
+        val host = PhoneSaarAssistantHost(this) { tab = 2 }
+        enableEdgeToEdge()
         setContent {
-            MaterialTheme(colorScheme = lightColorScheme(primary = Color(0xFF1F8A70))) {
-                Surface(Modifier.fillMaxSize()) {
-                    var tab by rememberSaveable { mutableIntStateOf(0) }
-                    Scaffold { pad ->
-                        Column(Modifier.padding(pad)) {
-                            ScrollableTabRow(selectedTabIndex = tab, edgePadding = 8.dp) {
-                                tabs.forEachIndexed { i, t -> Tab(tab == i, { tab = i }, text = { Text(t) }) }
-                            }
-                            when (tab) {
-                                0 -> ConnectScreen(vm)
-                                1 -> ReportScreen(vm)
-                                2 -> BoostScreen(vm)
-                                3 -> BatteryScreen(vm)
-                                4 -> DebloatScreen(vm)
-                                5 -> FixupsScreen(vm)
-                                else -> UndoScreen(vm)
-                            }
-                        }
+            PhoneSaarTheme {
+                var welcomed by remember { mutableStateOf(vm.repo.prefs.welcomed) }
+                if (!welcomed) {
+                    WelcomeScreen { lang ->
+                        vm.repo.prefs.welcomed = true
+                        welcomed = true
+                        Loc.set(this, lang)
                     }
-                }
+                } else MainShell(vm, host, tab) { tab = it }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("tab", tab)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        route(intent)
+    }
+
+    private fun route(intent: Intent?) {
+        if (intent?.getStringExtra(EXTRA_TAB) == TAB_POWER) tab = 2
     }
 
     override fun onStart() {
@@ -62,5 +58,10 @@ class MainActivity : ComponentActivity() {
     override fun onStop() {
         super.onStop()
         vm.stopDiscovery()
+    }
+
+    companion object {
+        const val EXTRA_TAB = "tab"
+        const val TAB_POWER = "power"
     }
 }

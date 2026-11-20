@@ -17,7 +17,7 @@
             android:id="@+id/ram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Free memory"
+            android:text="@string/widget_free_preview"
             android:textColor="@color/ink"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:text="Not boosted yet"
+            android:text="@string/widget_never"
             android:textColor="@color/muted"
             android:textSize="11sp" />
     </LinearLayout>
@@ -39,7 +39,7 @@
         android:layout_marginStart="8dp"
         android:minWidth="0dp"
         android:paddingHorizontal="14dp"
-        android:text="Boost"
+        android:text="@string/boost_button"
         android:textColor="#FFFFFFFF"
         android:backgroundTint="@color/accent" />
 </LinearLayout>

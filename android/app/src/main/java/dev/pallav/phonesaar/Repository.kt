@@ -1,6 +1,10 @@
 package dev.pallav.phonesaar
 
 import android.content.Context
+import android.os.Build
+import android.provider.Settings
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import dev.pallav.phonesaar.core.BatteryInfo
 import dev.pallav.phonesaar.core.Blocked
 import dev.pallav.phonesaar.core.CatalogEntry
@@ -21,10 +25,10 @@ data class ExecResult(val command: String, val output: String, val refused: Stri
         get() = refused == null && blocked == null && !FAILURE.containsMatchIn(output)
 
     // What the person sees: the device's real output, or why nothing ran.
-    fun message(): String = when {
+    fun message(done: String = "Done."): String = when {
         refused != null -> refused
         blocked != null -> "${blocked.message}. ${blocked.hint}"
-        output.isBlank() -> "Done."
+        output.isBlank() -> done
         else -> output.trim()
     }
 
@@ -46,17 +50,19 @@ data class Report(
     val locationMode: String,
     val top: List<ProcessCpu>,
 ) {
-    fun rows(): List<Pair<String, String>> = listOf(
-        "Phone" to "$manufacturer $model",
-        "Android" to android,
-        "Memory free" to "${mem.availableKb / 1024} MB of ${mem.totalKb / 1024} MB (${mem.availablePercent}%)",
-        "Storage free" to (data?.let { "${"%.1f".format(it.availKb / 1048576.0)} GB" } ?: "Unknown"),
-        "SD card free" to (sdCard?.let { "${"%.1f".format(it.availKb / 1048576.0)} GB" } ?: "None"),
-        "Battery" to "${battery.level}%, ${battery.tempC} C, ${battery.health}${if (battery.charging) ", charging" else ""}",
-        "Heat" to "${thermal.statusName}${thermal.hottest?.let { ", hottest ${it.name} ${it.celsius} C" } ?: ""}",
-        "Animation speed" to animations,
-        "Location" to if (locationMode == "0") "Off" else if (locationMode == "null") "Unknown" else "On",
-        "Busiest now" to (top.filter { it.name != "top" }.take(3).joinToString { "${it.name} ${it.cpu}%" }.ifBlank { "Nothing" }),
+    fun rows(c: Context): List<Pair<String, String>> = listOf(
+        c.getString(R.string.rep_phone) to "$manufacturer $model",
+        c.getString(R.string.rep_android) to android,
+        c.getString(R.string.rep_memory) to c.getString(R.string.rep_memory_val, mem.availableKb / 1024, mem.totalKb / 1024, mem.availablePercent),
+        c.getString(R.string.rep_storage) to (data?.let { c.getString(R.string.rep_gb, it.availKb / 1048576.0) } ?: c.getString(R.string.rep_unknown)),
+        c.getString(R.string.rep_sd) to (sdCard?.let { c.getString(R.string.rep_gb, it.availKb / 1048576.0) } ?: c.getString(R.string.rep_none)),
+        c.getString(R.string.rep_battery) to c.getString(R.string.rep_battery_val, battery.level, battery.tempC, battery.health) +
+            (if (battery.charging) c.getString(R.string.rep_charging) else ""),
+        c.getString(R.string.rep_heat) to "${thermal.statusName}${thermal.hottest?.let { ", ${it.name} ${it.celsius} C" } ?: ""}",
+        c.getString(R.string.rep_anim) to animations,
+        c.getString(R.string.rep_location) to
+            if (locationMode == "0") c.getString(R.string.rep_off) else if (locationMode == "null") c.getString(R.string.rep_unknown) else c.getString(R.string.rep_on),
+        c.getString(R.string.rep_busy) to (top.filter { it.name != "top" }.take(3).joinToString { "${it.name} ${it.cpu}%" }.ifBlank { c.getString(R.string.rep_nothing) }),
     )
 }
 
@@ -64,9 +70,15 @@ data class Drainer(val packages: List<String>, val uid: Int, val mah: Double) {
     val label: String get() = packages.firstOrNull() ?: "uid $uid"
 }
 
+private const val DONE = "__PHONESAAR_DONE__"
+private const val COMMAND_LIMIT_MS = 120_000L
+private const val WSS = "android.permission.WRITE_SECURE_SETTINGS"
+
 data class DebloatItem(val entry: CatalogEntry, val disabled: Boolean, val lastUsed: LocalDateTime?, val ramKb: Long)
 
 class Repository(private val context: Context) {
+    private fun str(id: Int, vararg a: Any): String = Loc.wrap(context).getString(id, *a)
+
     val rules: Rules = context.assets.open("rules.json").bufferedReader().use { Rules.parse(it.readText()) }
     val gate = SafetyGate(rules)
     val prefs = Prefs(context)
@@ -90,11 +102,32 @@ class Repository(private val context: Context) {
         val verdict = gate.check(command)
         if (verdict is Verdict.Refused) return ExecResult(command, "", refused = verdict.reason)
         val out = try {
-            adb.openStream("shell:$command").use { s -> s.openInputStream().readBytes().toString(Charsets.UTF_8) }
+            readUntilDone("($command); echo $DONE")
         } catch (e: Exception) {
-            return ExecResult(command, "", refused = "Lost the connection: ${e.message ?: "unknown error"}")
+            return ExecResult(command, "", refused = str(R.string.err_lost, e.message ?: str(R.string.err_unknown)))
         }
         return ExecResult(command, out, blocked = Parsers.detectSecurityException(out, manufacturer, rules))
+    }
+
+    // libadb does not always signal end of stream, so a marker line says when the command finished.
+    private fun readUntilDone(wrapped: String): String {
+        adb.openStream("shell:$wrapped").use { s ->
+            val watchdog = Thread { runCatching { Thread.sleep(COMMAND_LIMIT_MS); s.close() } }.apply { isDaemon = true; start() }
+            try {
+                val ins = s.openInputStream()
+                val bytes = java.io.ByteArrayOutputStream()
+                val buf = ByteArray(8192)
+                while (true) {
+                    val n = runCatching { ins.read(buf) }.getOrDefault(-1)
+                    if (n < 0) break
+                    bytes.write(buf, 0, n)
+                    if (bytes.toString(Charsets.UTF_8).trimEnd().endsWith(DONE)) break
+                }
+                return bytes.toString(Charsets.UTF_8).trimEnd().removeSuffix(DONE)
+            } finally {
+                watchdog.interrupt()
+            }
+        }
     }
 
     private fun text(cmd: String) = exec(cmd).output
@@ -120,6 +153,48 @@ class Repository(private val context: Context) {
             runCatching { adb.connectTls(context, 3000) }.getOrDefault(false)
         if (ok) runCatching { identify() }
         return ok && connected
+    }
+
+    // Remembers a connected device for the saved-devices list.
+    fun rememberDevice(host: String, port: Int, kind: TargetKind) {
+        val device = SavedDevice("$manufacturer $model".trim(), host, port, kind)
+        prefs.devices = (listOf(device) + prefs.devices.filter { it.name != device.name || it.host != host }).take(8)
+    }
+
+    // True when this app may flip wireless debugging back on by itself (needs Wi-Fi and the one-time grant).
+    fun canReenable(): Boolean = Build.VERSION.SDK_INT >= 30 && Env.hasSecureGrant(context) && Env.onWifi(context)
+
+    // Turns wireless debugging on, finds its fresh connect port and reconnects, with no user action.
+    fun reenableAndConnect(): Boolean {
+        if (!canReenable()) return false
+        runCatching { Settings.Global.putInt(context.contentResolver, "adb_wifi_enabled", 1) }
+        val port = discoverConnectPort(6000)
+        if (port > 0) {
+            prefs.selfHost = "127.0.0.1"
+            prefs.selfPort = port
+        }
+        return ensureSelfConnected()
+    }
+
+    private fun discoverConnectPort(timeoutMs: Long): Int {
+        val latch = CountDownLatch(1)
+        var found = 0
+        val nsd = Nsd(context) { pairing, _, port -> if (!pairing) { found = port; latch.countDown() } }
+        nsd.start()
+        latch.await(timeoutMs, TimeUnit.MILLISECONDS)
+        nsd.stop()
+        return found
+    }
+
+    // One-time grant that lets PhoneSaar re-enable wireless debugging later; logged with its undo.
+    fun grantSecureSettings(): ExecResult {
+        val r = change(
+            str(R.string.undo_secure),
+            "pm grant ${context.packageName} $WSS",
+            "pm revoke ${context.packageName} $WSS",
+        )
+        prefs.secureNote = if (Env.hasSecureGrant(context)) "" else r.message()
+        return r
     }
 
     fun report(): Report {
@@ -156,7 +231,7 @@ class Repository(private val context: Context) {
         val undoCmd = keys.indices.joinToString("; ") {
             if (old[it] == "null" || old[it].isBlank()) "settings delete global ${keys[it]}" else "settings put global ${keys[it]} ${old[it]}"
         }
-        return change("Animation speed $scale", doCmd, undoCmd)
+        return change(str(R.string.undo_anim, scale), doCmd, undoCmd)
     }
 
     // Runs a change and records it in the undo log only when the device accepted it.
@@ -191,7 +266,7 @@ class Repository(private val context: Context) {
     }
 
     fun restrictBackground(pkg: String): ExecResult = change(
-        "Limit $pkg in the background",
+        str(R.string.undo_limit, pkg),
         "cmd appops set $pkg RUN_ANY_IN_BACKGROUND ignore",
         "cmd appops set $pkg RUN_ANY_IN_BACKGROUND allow",
     )
@@ -206,7 +281,7 @@ class Repository(private val context: Context) {
     }
 
     fun disable(item: CatalogEntry): ExecResult = change(
-        "Turn off ${item.pkg}",
+        str(R.string.undo_off, item.pkg),
         "pm disable-user --user 0 ${item.pkg}",
         "pm enable ${item.pkg}",
     )
@@ -215,20 +290,20 @@ class Repository(private val context: Context) {
 
     fun turnLocationOn(): ExecResult {
         val old = text("settings get secure location_mode").trim().let { if (it == "null" || it.isBlank()) "0" else it }
-        return change("Location on", "settings put secure location_mode 3", "settings put secure location_mode $old")
+        return change(str(R.string.undo_location), "settings put secure location_mode 3", "settings put secure location_mode $old")
     }
 
     fun shortenTouchAndHold(): ExecResult {
         val old = text("settings get secure long_press_timeout").trim()
         val undo = if (old == "null" || old.isBlank()) "settings delete secure long_press_timeout" else "settings put secure long_press_timeout $old"
-        return change("Touch and hold delay", "settings put secure long_press_timeout 400", undo)
+        return change(str(R.string.undo_touch), "settings put secure long_press_timeout 400", undo)
     }
 
     fun grant(pkg: String, permission: String): ExecResult =
-        change("Allow $permission for $pkg", "pm grant $pkg $permission", "pm revoke $pkg $permission")
+        change(str(R.string.undo_allow, permission.substringAfterLast('.'), pkg), "pm grant $pkg $permission", "pm revoke $pkg $permission")
 
     fun stopAutoRevoke(pkg: String): ExecResult = change(
-        "Keep permissions for $pkg",
+        str(R.string.undo_keep, pkg),
         "cmd appops set $pkg AUTO_REVOKE_PERMISSIONS_IF_UNUSED ignore",
         "cmd appops set $pkg AUTO_REVOKE_PERMISSIONS_IF_UNUSED default",
     )
