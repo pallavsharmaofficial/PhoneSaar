@@ -38,12 +38,23 @@ jobs:
           grep -q "v2 scheme (APK Signature Scheme v2): true" /tmp/sig.txt
           "$BT/zipalign" -c -P 16 4 "$APK"
           "$BT/aapt2" dump badging "$APK" | head -3
+          LAPK=launcher/build/outputs/apk/release/launcher-release.apk
+          "$BT/apksigner" verify -v "$LAPK" | tee /tmp/lsig.txt
+          grep -q "v2 scheme (APK Signature Scheme v2): true" /tmp/lsig.txt
+          "$BT/zipalign" -c -P 16 4 "$LAPK"
+          "$BT/aapt2" dump badging "$LAPK" | head -3
       - name: Name the APK
         run: |
           cp app/build/outputs/apk/release/app-release.apk ../phonesaar.apk
           cp ../phonesaar.apk ../phonesaar-1.0.${{ github.run_number }}.apk
           cd .. && sha256sum phonesaar.apk | cut -d' ' -f1 > phonesaar.apk.sha256
           printf '{"versionCode":%s,"versionName":"1.0.%s","bytes":%s,"sha256":"%s"}\n' "${{ github.run_number }}" "${{ github.run_number }}" "$(stat -c %s phonesaar.apk)" "$(cat phonesaar.apk.sha256)" > version.json
+      - name: Name the launcher APK
+        run: |
+          cp launcher/build/outputs/apk/release/launcher-release.apk ../phonesaar-launcher.apk
+          cp ../phonesaar-launcher.apk ../phonesaar-launcher-1.0.${{ github.run_number }}.apk
+          cd .. && sha256sum phonesaar-launcher.apk | cut -d' ' -f1 > phonesaar-launcher.apk.sha256
+          printf '{"versionCode":%s,"versionName":"1.0.%s","bytes":%s,"sha256":"%s"}\n' "${{ github.run_number }}" "${{ github.run_number }}" "$(stat -c %s phonesaar-launcher.apk)" "$(cat phonesaar-launcher.apk.sha256)" > launcher-version.json
       # The release is updated in place, never deleted, so the download link never 404s mid-build.
       - name: Publish to the "latest" release
         working-directory: .
@@ -52,4 +63,5 @@ jobs:
         run: |
           gh release view latest >/dev/null 2>&1 || gh release create latest --title "PhoneSaar" --notes "Latest build"
           gh release upload latest phonesaar.apk phonesaar-1.0.${{ github.run_number }}.apk phonesaar.apk.sha256 version.json --clobber
+          gh release upload latest phonesaar-launcher.apk phonesaar-launcher-1.0.${{ github.run_number }}.apk phonesaar-launcher.apk.sha256 launcher-version.json --clobber
           gh release edit latest --title "PhoneSaar 1.0.${{ github.run_number }}" --notes "Built from ${{ github.sha }}. Download phonesaar.apk and open it. Installs over earlier builds; the signing key is the same."

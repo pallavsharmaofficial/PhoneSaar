@@ -114,10 +114,11 @@ internal fun AppsView(prefs: AssistantPrefs, apps: List<AppEntry>) {
         LazyVerticalGrid(GridCells.Adaptive(104.dp), Modifier.weight(1f, fill = true), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
             for (section in sections) {
                 item(span = { GridItemSpan(maxLineSpan) }) {
+                    val cat = section.category
                     val title = when {
                         section.isPinned -> "📌 " + stringResource(R.string.asst_pinned)
-                        section.category == null -> stringResource(R.string.asst_results)
-                        else -> categoryEmoji(section.category) + " " + stringResource(categoryName(section.category))
+                        cat == null -> stringResource(R.string.asst_results)
+                        else -> categoryEmoji(cat) + " " + stringResource(categoryName(cat))
                     }
                     Text(title, Modifier.padding(top = 14.dp, bottom = 4.dp), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                 }

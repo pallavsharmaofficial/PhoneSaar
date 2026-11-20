@@ -1,0 +1,18 @@
+{
+  "name": "Sphere",
+  "theme": {
+    "background": "wallpaper", "scrim": "#66000000",
+    "accent": "#7CC4FF", "text": "#FFFFFF", "textDim": "#B3FFFFFF", "surface": "#33FFFFFF",
+    "fonts": { "clock": "default", "display": "default", "body": "default" },
+    "cornerRadius": 20, "blur": true, "iconShape": "system", "lightStatusIcons": true
+  },
+  "layout": [
+    { "type": "clock", "size": 64, "align": "start", "date": true },
+    { "type": "notifications", "maxItems": 2 },
+    { "type": "sphere", "weight": 1 },
+    { "type": "search", "mic": true },
+    { "type": "dock", "items": ["auto:top4"] }
+  ],
+  "sphere": { "radius": 0.42, "apps": 36, "iconMin": 28, "iconMax": 64, "labels": true, "autoRotate": 6, "friction": 1.6, "rank": "usage", "highlightTop": 5, "glow": true },
+  "gestures": { "swipeUp": "drawer", "swipeDown": "shade", "doubleTap": "lock", "longPress": "settings" }
+}

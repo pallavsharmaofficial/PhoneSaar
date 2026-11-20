@@ -1,0 +1,19 @@
+{
+  "name": "Paper",
+  "theme": {
+    "background": "solid", "backgroundColor": "#F4EFE6",
+    "accent": "#8B4513", "text": "#2B2118", "textDim": "#7A6A58", "surface": "#CCFFFFFF",
+    "fonts": { "clock": "baskerville", "display": "baskerville", "body": "inter" },
+    "cornerRadius": 10, "blur": false, "shadow": 0.25, "iconShape": "squircle", "lightStatusIcons": false
+  },
+  "layout": [
+    { "type": "greeting", "size": 22, "name": "" },
+    { "type": "clock", "size": 52, "align": "start", "format": "hh:mm", "dateFormat": "EEEE, d MMMM" },
+    { "type": "notifications", "maxItems": 3 },
+    { "type": "favorites", "rows": 3, "cols": 4, "items": ["auto:top12"], "labels": true },
+    { "type": "spacer", "weight": 1 },
+    { "type": "search", "mic": true },
+    { "type": "dock", "items": ["auto:top4"] }
+  ],
+  "gestures": { "swipeUp": "drawer", "swipeDown": "shade", "doubleTap": "none", "longPress": "settings" }
+}

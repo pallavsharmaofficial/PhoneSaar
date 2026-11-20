@@ -1,0 +1,11 @@
+/* Launcher page extras; the base look comes from styles.css. */
+.l-hero { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; padding: 32px 0 24px; }
+@media (min-width: 760px) { .l-hero { grid-template-columns: 1.1fr .9fr; } }
+.shot { display: block; width: 100%; max-width: 320px; height: auto; border-radius: 22px; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.12); margin: 0 auto; }
+.shots { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.shots figure { margin: 0; text-align: center; }
+.shots figcaption { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+pre.code { background: var(--code); border: 1px solid var(--line); border-radius: 12px; padding: 14px; overflow-x: auto; font-size: .85rem; line-height: 1.5; }
+code { background: var(--code); border-radius: 6px; padding: 1px 6px; font-size: .9em; }
+pre.code code { background: none; padding: 0; }
+.size { color: var(--muted); font-weight: 400; }

@@ -1,0 +1,25 @@
+{
+  "name": "Mono Cards",
+  "theme": {
+    "background": "solid", "backgroundColor": "#F2F2F4",
+    "accent": "#111111", "text": "#111111", "textDim": "#6B6B70", "surface": "#FFFFFF",
+    "fonts": { "clock": "anton", "display": "baskerville", "body": "inter", "signature": "signature" },
+    "cornerRadius": 22, "shadow": 0.6, "neumorphic": true, "spacing": 1,
+    "iconStyle": "mono-circle", "iconShape": "circle", "lightStatusIcons": false
+  },
+  "layout": {
+    "mode": "grid", "columns": 2, "gap": 12, "rowUnit": 64,
+    "blocks": [
+      { "type": "clock", "col": 0, "rowSpan": 3, "style": "card", "format": "hh:mm", "dateFormat": "dd - MM - yyyy", "name": "Your Name", "title": "CREATIVE DESIGNER" },
+      { "type": "weather", "col": 1, "rowSpan": 2, "city": "", "unit": "c" },
+      { "type": "google", "col": 1, "rowSpan": 1, "text": "Google" },
+      { "type": "photo", "col": 0, "rowSpan": 4, "mask": "brush" },
+      { "type": "music", "col": 1, "rowSpan": 3 },
+      { "type": "status", "col": 1, "rowSpan": 1 },
+      { "type": "applist", "col": 0, "rowSpan": 4, "maxItems": 6, "items": ["role:phone", "role:browser", "com.google.android.youtube", "role:gallery", "com.whatsapp", "com.pinterest"] },
+      { "type": "calendar", "col": 1, "rowSpan": 3 },
+      { "type": "dock", "colSpan": 2, "indicator": true, "drawerButton": false, "items": ["role:phone", "role:browser", "com.google.android.youtube", "role:gallery", "com.whatsapp", "com.pinterest"] }
+    ]
+  },
+  "gestures": { "swipeUp": "drawer", "swipeDown": "shade", "doubleTap": "none", "longPress": "settings" }
+}

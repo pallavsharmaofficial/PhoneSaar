@@ -1,0 +1,17 @@
+{
+  "name": "Neon",
+  "theme": {
+    "background": "gradient", "gradient": ["#12002B", "#001B3A", "#00060F"], "gradientAngle": 120,
+    "accent": "#00F5D4", "text": "#F5F0FF", "textDim": "#B39DDB", "surface": "#331B0A4D",
+    "fonts": { "clock": "mono", "display": "mono", "body": "mono" },
+    "cornerRadius": 14, "blur": true, "iconShape": "circle", "lightStatusIcons": true
+  },
+  "layout": [
+    { "type": "clock", "size": 56, "align": "center", "format": "HH:mm", "dateFormat": "yyyy.MM.dd" },
+    { "type": "sphere", "weight": 1 },
+    { "type": "notifications", "maxItems": 2 },
+    { "type": "dock", "items": ["auto:top4"] }
+  ],
+  "sphere": { "radius": 0.46, "apps": 48, "iconMin": 24, "iconMax": 56, "labels": false, "autoRotate": 12, "friction": 1.2, "rank": "usage", "highlightTop": 8, "glow": true },
+  "gestures": { "swipeUp": "drawer", "swipeDown": "shade", "doubleTap": "none", "longPress": "settings" }
+}

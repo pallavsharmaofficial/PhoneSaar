@@ -14,4 +14,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "PhoneSaar"
-include(":app")
+include(":app", ":assistant-core", ":launcher")
