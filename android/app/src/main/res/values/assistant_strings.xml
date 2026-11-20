@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="asst_intro_title">Phone assistant</string>
+    <string name="asst_intro_line1">Find all your apps easily, sorted in groups.</string>
+    <string name="asst_intro_line2">Ask by voice or by typing: call, torch, alarm, timer and more.</string>
+    <string name="asst_intro_line3">Everything stays on your phone. No internet, no account.</string>
+    <string name="asst_turn_on">Turn on assistant</string>
+    <string name="asst_turn_off">Turn off assistant</string>
+
+    <string name="asst_tab_ask">Ask</string>
+    <string name="asst_tab_apps">My apps</string>
+
+    <string name="asst_greeting">Namaste! Type or speak what you want. Tap an example below to try.</string>
+    <string name="asst_you">You</string>
+    <string name="asst_assistant">Assistant</string>
+    <string name="asst_input_hint">Type here, for example: open WhatsApp</string>
+    <string name="asst_send">Send</string>
+    <string name="asst_send_cd">Send your message</string>
+    <string name="asst_mic_cd">Speak to the phone</string>
+    <string name="asst_mic_stop_cd">Stop listening</string>
+    <string name="asst_mic_caption">Tap and speak</string>
+    <string name="asst_listening">Listening… speak now. Tap to stop.</string>
+    <string name="asst_speak_replies">Speak replies</string>
+    <string name="asst_examples_cd">Example commands</string>
+
+    <string name="asst_chip_1">Open WhatsApp</string>
+    <string name="asst_chip_2">Torch on</string>
+    <string name="asst_chip_3">Alarm at 6 am</string>
+    <string name="asst_chip_4">5 minute timer</string>
+    <string name="asst_chip_5">How is my battery?</string>
+    <string name="asst_chip_6">Call Mom</string>
+
+    <string name="asst_reply_unknown">Sorry, I did not understand that. You can try:</string>
+    <string name="asst_reply_opening">Opening %1$s.</string>
+    <string name="asst_reply_app_missing">I could not find an app called %1$s. Try the My apps tab.</string>
+    <string name="asst_reply_app_failed">I could not open %1$s.</string>
+    <string name="asst_reply_dialer_number">Opening the dialer for %1$s. Press the green button to call.</string>
+    <string name="asst_reply_dialer_name">Opening the dialer for %1$s (%2$s). Press the green button to call.</string>
+    <string name="asst_reply_contact_missing">I could not find %1$s in your contacts.</string>
+    <string name="asst_reply_contacts_denied">I need permission to look in your contacts. You can type the number instead.</string>
+    <string name="asst_reply_call_who">Opening the dialer. Type the number you want to call.</string>
+    <string name="asst_reply_torch_on">Torch is on.</string>
+    <string name="asst_reply_torch_off">Torch is off.</string>
+    <string name="asst_reply_torch_fail">I could not use the torch on this phone.</string>
+    <string name="asst_reply_alarm_set">Alarm set for %1$s.</string>
+    <string name="asst_reply_alarm_open">Opening alarms. Choose a time.</string>
+    <string name="asst_reply_alarm_fail">I could not set the alarm on this phone.</string>
+    <string name="asst_reply_timer_set">Timer set for %1$s.</string>
+    <string name="asst_reply_timer_fail">I could not set the timer on this phone.</string>
+    <string name="asst_dur_h">%1$d hour</string>
+    <string name="asst_dur_m">%1$d min</string>
+    <string name="asst_dur_s">%1$d sec</string>
+    <string name="asst_reply_settings">Opening %1$s settings.</string>
+    <string name="asst_reply_settings_fail">I could not open that setting.</string>
+    <string name="asst_set_main">phone</string>
+    <string name="asst_set_wifi">Wi-Fi</string>
+    <string name="asst_set_bluetooth">Bluetooth</string>
+    <string name="asst_set_data">mobile data</string>
+    <string name="asst_set_display">display and brightness</string>
+    <string name="asst_set_sound">sound and volume</string>
+    <string name="asst_set_location">location</string>
+    <string name="asst_set_battery">battery</string>
+    <string name="asst_set_storage">storage</string>
+    <string name="asst_reply_camera">Opening the camera.</string>
+    <string name="asst_reply_camera_fail">I could not open the camera.</string>
+    <string name="asst_reply_time">The time is %1$s.</string>
+    <string name="asst_reply_date">Today is %1$s.</string>
+    <string name="asst_reply_boosting">Making your phone faster…</string>
+    <string name="asst_reply_error">Something went wrong. Please try again.</string>
+    <string name="asst_open_power_tools">Open power tools</string>
+    <string name="asst_help_body">I can:\n• Open an app: \"open YouTube\"\n• Call: \"call Mom\" or \"call 9876543210\"\n• Torch: \"torch on\", \"torch off\"\n• Alarm: \"alarm at 6:30 am\"\n• Timer: \"5 minute timer\"\n• Battery and phone health: \"how is my battery\"\n• Speed up: \"make phone fast\"\n• Settings: \"Wi-Fi\", \"Bluetooth\", \"volume\", \"brightness\"\n• Camera, time and date\nYou can speak or type in English, Hindi or Hinglish.</string>
+
+    <string name="asst_lang_hi">Hindi</string>
+    <string name="asst_lang_en">English</string>
+    <string name="asst_voice_no_pack">The offline %1$s voice pack is missing. Download it in your phone\'s speech settings, or type instead.</string>
+    <string name="asst_voice_no_speech">I did not hear anything. Tap the mic and try again.</string>
+    <string name="asst_voice_denied">Microphone permission is needed to listen. You can still type.</string>
+    <string name="asst_voice_error">Voice did not work. Please type instead.</string>
+    <string name="asst_tts_card_title">%1$s voice is not installed</string>
+    <string name="asst_tts_card_body">I will show my replies as text. To also hear them, install the voice.</string>
+    <string name="asst_tts_install">Install voice</string>
+    <string name="asst_tts_dismiss">Not now</string>
+
+    <string name="asst_search_hint">Search apps</string>
+    <string name="asst_search_cd">Search your apps by name</string>
+    <string name="asst_no_apps">No apps found.</string>
+    <string name="asst_pinned">Pinned</string>
+    <string name="asst_results">Results</string>
+    <string name="asst_arrange">Arrange groups</string>
+    <string name="asst_arrange_title">Arrange groups</string>
+    <string name="asst_open_cd">Open %1$s. Press and hold for more options.</string>
+    <string name="asst_pin">Pin to top</string>
+    <string name="asst_unpin">Remove from top</string>
+    <string name="asst_move">Move to group</string>
+    <string name="asst_move_title">Move %1$s to</string>
+    <string name="asst_move_auto">Automatic (let the phone decide)</string>
+    <string name="asst_cancel">Cancel</string>
+    <string name="asst_done">Done</string>
+    <string name="asst_reset">Reset</string>
+    <string name="asst_up_cd">Move %1$s up</string>
+    <string name="asst_down_cd">Move %1$s down</string>
+    <string name="asst_show_cd">Show %1$s group</string>
+
+    <string name="asst_cat_chat">Calls &amp; chat</string>
+    <string name="asst_cat_money">Money &amp; UPI</string>
+    <string name="asst_cat_travel">Travel &amp; maps</string>
+    <string name="asst_cat_work">Work &amp; driving</string>
+    <string name="asst_cat_photos">Photos &amp; camera</string>
+    <string name="asst_cat_media">Videos &amp; music</string>
+    <string name="asst_cat_shopping">Shopping</string>
+    <string name="asst_cat_gov_health">Government &amp; health</string>
+    <string name="asst_cat_learning">Learning</string>
+    <string name="asst_cat_tools">Tools &amp; settings</string>
+    <string name="asst_cat_games">Games</string>
+    <string name="asst_cat_other">Other</string>
+</resources>

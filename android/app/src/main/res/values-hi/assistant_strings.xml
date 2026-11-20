@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="asst_intro_title">फोन सहायक</string>
+    <string name="asst_intro_line1">अपने सभी ऐप आसानी से ढूँढें, समूहों में सजे हुए।</string>
+    <string name="asst_intro_line2">बोलकर या लिखकर कहें: फोन करना, टॉर्च, अलार्म, टाइमर और बहुत कुछ।</string>
+    <string name="asst_intro_line3">सब कुछ आपके फोन में ही रहता है। इंटरनेट नहीं, खाता नहीं।</string>
+    <string name="asst_turn_on">सहायक चालू करें</string>
+    <string name="asst_turn_off">सहायक बंद करें</string>
+
+    <string name="asst_tab_ask">पूछें</string>
+    <string name="asst_tab_apps">मेरे ऐप</string>
+
+    <string name="asst_greeting">नमस्ते! जो चाहिए, लिखें या बोलें। आज़माने के लिए नीचे कोई उदाहरण दबाएँ।</string>
+    <string name="asst_you">आप</string>
+    <string name="asst_assistant">सहायक</string>
+    <string name="asst_input_hint">यहाँ लिखें, जैसे: व्हाट्सएप खोलो</string>
+    <string name="asst_send">भेजें</string>
+    <string name="asst_send_cd">अपना संदेश भेजें</string>
+    <string name="asst_mic_cd">फोन से बोलें</string>
+    <string name="asst_mic_stop_cd">सुनना बंद करें</string>
+    <string name="asst_mic_caption">दबाएँ और बोलें</string>
+    <string name="asst_listening">सुन रहा हूँ… अब बोलिए। रोकने के लिए दबाएँ।</string>
+    <string name="asst_speak_replies">जवाब बोलकर सुनाएँ</string>
+    <string name="asst_examples_cd">उदाहरण</string>
+
+    <string name="asst_chip_1">व्हाट्सएप खोलो</string>
+    <string name="asst_chip_2">टॉर्च चालू करो</string>
+    <string name="asst_chip_3">सुबह 6 बजे अलार्म लगाओ</string>
+    <string name="asst_chip_4">5 मिनट का टाइमर</string>
+    <string name="asst_chip_5">बैटरी कितनी है</string>
+    <string name="asst_chip_6">मम्मी को फोन करो</string>
+
+    <string name="asst_reply_unknown">माफ़ कीजिए, मैं समझ नहीं पाया। आप ये कह सकते हैं:</string>
+    <string name="asst_reply_opening">%1$s खोल रहा हूँ।</string>
+    <string name="asst_reply_app_missing">%1$s नाम का ऐप नहीं मिला। \"मेरे ऐप\" में देखें।</string>
+    <string name="asst_reply_app_failed">%1$s नहीं खुल पाया।</string>
+    <string name="asst_reply_dialer_number">%1$s के लिए डायलर खोल रहा हूँ। फोन करने के लिए हरा बटन दबाएँ।</string>
+    <string name="asst_reply_dialer_name">%1$s (%2$s) के लिए डायलर खोल रहा हूँ। फोन करने के लिए हरा बटन दबाएँ।</string>
+    <string name="asst_reply_contact_missing">आपके संपर्कों में %1$s नहीं मिला।</string>
+    <string name="asst_reply_contacts_denied">संपर्क देखने के लिए अनुमति चाहिए। आप नंबर लिखकर भी बता सकते हैं।</string>
+    <string name="asst_reply_call_who">डायलर खोल रहा हूँ। जिसे फोन करना है, उसका नंबर लिखें।</string>
+    <string name="asst_reply_torch_on">टॉर्च चालू है।</string>
+    <string name="asst_reply_torch_off">टॉर्च बंद है।</string>
+    <string name="asst_reply_torch_fail">इस फोन में टॉर्च नहीं चल पाई।</string>
+    <string name="asst_reply_alarm_set">%1$s का अलार्म लग गया।</string>
+    <string name="asst_reply_alarm_open">अलार्म खोल रहा हूँ। समय चुनें।</string>
+    <string name="asst_reply_alarm_fail">इस फोन में अलार्म नहीं लग पाया।</string>
+    <string name="asst_reply_timer_set">%1$s का टाइमर लग गया।</string>
+    <string name="asst_reply_timer_fail">इस फोन में टाइमर नहीं लग पाया।</string>
+    <string name="asst_dur_h">%1$d घंटा</string>
+    <string name="asst_dur_m">%1$d मिनट</string>
+    <string name="asst_dur_s">%1$d सेकंड</string>
+    <string name="asst_reply_settings">%1$s की सेटिंग खोल रहा हूँ।</string>
+    <string name="asst_reply_settings_fail">वह सेटिंग नहीं खुल पाई।</string>
+    <string name="asst_set_main">फोन</string>
+    <string name="asst_set_wifi">वाई-फाई</string>
+    <string name="asst_set_bluetooth">ब्लूटूथ</string>
+    <string name="asst_set_data">मोबाइल डेटा</string>
+    <string name="asst_set_display">स्क्रीन और चमक</string>
+    <string name="asst_set_sound">आवाज़ और वॉल्यूम</string>
+    <string name="asst_set_location">लोकेशन</string>
+    <string name="asst_set_battery">बैटरी</string>
+    <string name="asst_set_storage">स्टोरेज</string>
+    <string name="asst_reply_camera">कैमरा खोल रहा हूँ।</string>
+    <string name="asst_reply_camera_fail">कैमरा नहीं खुल पाया।</string>
+    <string name="asst_reply_time">अभी समय है %1$s।</string>
+    <string name="asst_reply_date">आज की तारीख है %1$s।</string>
+    <string name="asst_reply_boosting">आपका फोन तेज़ कर रहा हूँ…</string>
+    <string name="asst_reply_error">कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।</string>
+    <string name="asst_open_power_tools">पावर टूल खोलें</string>
+    <string name="asst_help_body">मैं ये कर सकता हूँ:\n• ऐप खोलना: \"यूट्यूब खोलो\"\n• फोन करना: \"मम्मी को फोन करो\" या \"9876543210 पर फोन करो\"\n• टॉर्च: \"टॉर्च चालू करो\", \"टॉर्च बंद करो\"\n• अलार्म: \"सुबह 6:30 बजे अलार्म लगाओ\"\n• टाइमर: \"5 मिनट का टाइमर\"\n• बैटरी और फोन का हाल: \"बैटरी कितनी है\"\n• फोन तेज़ करना: \"फोन तेज़ करो\"\n• सेटिंग: \"वाई-फाई\", \"ब्लूटूथ\", \"आवाज़\", \"चमक\"\n• कैमरा, समय और तारीख\nआप हिंदी, अंग्रेज़ी या हिंग्लिश में बोल या लिख सकते हैं।</string>
+
+    <string name="asst_lang_hi">हिंदी</string>
+    <string name="asst_lang_en">अंग्रेज़ी</string>
+    <string name="asst_voice_no_pack">%1$s की ऑफ़लाइन आवाज़ फोन में नहीं है। फोन की स्पीच सेटिंग से उसे डाउनलोड करें, या लिखकर बताएँ।</string>
+    <string name="asst_voice_no_speech">कुछ सुनाई नहीं दिया। माइक दबाकर फिर से बोलें।</string>
+    <string name="asst_voice_denied">सुनने के लिए माइक की अनुमति चाहिए। आप लिखकर बता सकते हैं।</string>
+    <string name="asst_voice_error">आवाज़ काम नहीं कर पाई। कृपया लिखकर बताएँ।</string>
+    <string name="asst_tts_card_title">%1$s आवाज़ इंस्टॉल नहीं है</string>
+    <string name="asst_tts_card_body">मैं जवाब लिखकर दिखाऊँगा। सुनने के लिए आवाज़ इंस्टॉल करें।</string>
+    <string name="asst_tts_install">आवाज़ इंस्टॉल करें</string>
+    <string name="asst_tts_dismiss">अभी नहीं</string>
+
+    <string name="asst_search_hint">ऐप खोजें</string>
+    <string name="asst_search_cd">नाम से अपने ऐप खोजें</string>
+    <string name="asst_no_apps">कोई ऐप नहीं मिला।</string>
+    <string name="asst_pinned">ऊपर लगाए गए</string>
+    <string name="asst_results">नतीजे</string>
+    <string name="asst_arrange">समूह सजाएँ</string>
+    <string name="asst_arrange_title">समूह सजाएँ</string>
+    <string name="asst_open_cd">%1$s खोलें। और विकल्पों के लिए देर तक दबाएँ।</string>
+    <string name="asst_pin">ऊपर लगाएँ</string>
+    <string name="asst_unpin">ऊपर से हटाएँ</string>
+    <string name="asst_move">दूसरे समूह में ले जाएँ</string>
+    <string name="asst_move_title">%1$s को कहाँ ले जाएँ</string>
+    <string name="asst_move_auto">अपने आप (फोन तय करे)</string>
+    <string name="asst_cancel">रद्द करें</string>
+    <string name="asst_done">हो गया</string>
+    <string name="asst_reset">फिर से शुरू करें</string>
+    <string name="asst_up_cd">%1$s को ऊपर ले जाएँ</string>
+    <string name="asst_down_cd">%1$s को नीचे ले जाएँ</string>
+    <string name="asst_show_cd">%1$s समूह दिखाएँ</string>
+
+    <string name="asst_cat_chat">कॉल और चैट</string>
+    <string name="asst_cat_money">पैसे और UPI</string>
+    <string name="asst_cat_travel">सफ़र और नक्शे</string>
+    <string name="asst_cat_work">काम और ड्राइविंग</string>
+    <string name="asst_cat_photos">फोटो और कैमरा</string>
+    <string name="asst_cat_media">वीडियो और गाने</string>
+    <string name="asst_cat_shopping">खरीदारी</string>
+    <string name="asst_cat_gov_health">सरकारी और स्वास्थ्य</string>
+    <string name="asst_cat_learning">पढ़ाई</string>
+    <string name="asst_cat_tools">औज़ार और सेटिंग</string>
+    <string name="asst_cat_games">खेल</string>
+    <string name="asst_cat_other">अन्य</string>
+</resources>
