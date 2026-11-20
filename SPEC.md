@@ -9,6 +9,14 @@ PhoneSaar makes an Android phone or TV faster and lighter on battery over adb, w
 
 A browser cannot open raw TCP sockets, so the web app is USB only and says so on its connect screen; it points Wi-Fi users to the APK.
 
+## The APK works on download (v2)
+
+The APK is useful the moment it is installed; anything needing setup is optional and guided in-app. Three tabs, Hindi or English (chosen on first launch, switchable in Settings):
+
+1. **Home** (no setup): health card from Android APIs (RAM, storage, battery, heat) with a plain verdict; Boost (quick boost on Android 8-13; on 14+ `killBackgroundProcesses` only affects the caller, so without adb Home shows an honest "one-time setup" card instead of a fake result); shortcuts to storage, battery saver, battery usage, add widget and add Quick Settings tile.
+2. **Assistant** (optional, off until turned on, fully offline): "My apps" sorted into simple groups the user can rearrange; typed or spoken requests in Hindi, Hinglish or English (open app, call via the dialer, torch, alarm, timer, health, boost, settings pages, camera, time, date).
+3. **Power tools**: a live-checked wizard (Developer options, Wi-Fi, wireless debugging with the pairing code typed into a notification) that unlocks the adb features below. After the first self-connection the app grants itself `WRITE_SECURE_SETTINGS` (undoable) so it can turn wireless debugging back on for later boosts.
+
 ## Safety contract (both clients, enforced in the command layer, not just the UI)
 
 1. **Forbidden commands** are refused before they reach the device: every regex in `rules/rules.json` → `forbidden`. They include `pm clear`, `pm uninstall`, `cmd package uninstall`, factory reset (`recovery --wipe`, `am broadcast ... MASTER_CLEAR`), `rm` outside the two allowed thumbnail paths, `wipe`, `reboot bootloader|recovery`, and `settings put ... adb_enabled 0`.
