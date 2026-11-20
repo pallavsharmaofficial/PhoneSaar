@@ -35,7 +35,6 @@ jobs:
           BT="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
           APK=app/build/outputs/apk/release/app-release.apk
           "$BT/apksigner" verify -v "$APK" | tee /tmp/sig.txt
-          grep -q "v1 scheme (JAR signing): true" /tmp/sig.txt
           grep -q "v2 scheme (APK Signature Scheme v2): true" /tmp/sig.txt
           "$BT/zipalign" -c -P 16 4 "$APK"
           "$BT/aapt2" dump badging "$APK" | head -3

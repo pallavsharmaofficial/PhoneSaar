@@ -27,7 +27,6 @@ android {
                 storePassword = System.getenv("PHONESAAR_KEYSTORE_PASSWORD")
                 keyAlias = System.getenv("PHONESAAR_KEY_ALIAS")
                 keyPassword = System.getenv("PHONESAAR_KEYSTORE_PASSWORD")
-                enableV1Signing = true
                 enableV2Signing = true
                 enableV3Signing = true
             }

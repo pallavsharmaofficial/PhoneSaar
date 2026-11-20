@@ -1,5 +1,7 @@
 package dev.pallav.phonesaar
 
+import androidx.compose.foundation.layout.consumeWindowInsets
+
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -103,7 +105,7 @@ fun MainShell(vm: AppViewModel, host: AssistantHost, tab: Int, onTab: (Int) -> U
             }
         },
     ) { pad ->
-        Column(Modifier.padding(pad)) {
+        Column(Modifier.padding(pad).consumeWindowInsets(pad)) {
             when (tab) {
                 0 -> HomeScreen(vm) { onTab(2) }
                 1 -> AssistantScreen(host, Modifier.fillMaxSize())

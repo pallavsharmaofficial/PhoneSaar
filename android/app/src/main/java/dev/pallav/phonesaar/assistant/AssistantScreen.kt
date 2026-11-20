@@ -15,6 +15,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.isImeVisible
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
@@ -158,6 +161,7 @@ private fun AssistantMain(host: AssistantHost, prefs: AssistantPrefs, onTurnOff:
 
 private data class ChatLine(val fromUser: Boolean, val text: String, val action: ReplyAction? = null)
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun AskView(host: AssistantHost, prefs: AssistantPrefs, apps: List<AppEntry>, onTurnOff: () -> Unit) {
     val context = LocalContext.current
@@ -244,9 +248,11 @@ private fun AskView(host: AssistantHost, prefs: AssistantPrefs, apps: List<AppEn
     }
 
     LaunchedEffect(lines.size) { listState.animateScrollToItem(lines.lastIndex) }
+    // While typing, the mic and turn-off button step aside so the conversation stays visible.
+    val typing = WindowInsets.isImeVisible
 
     Column(Modifier.fillMaxSize().imePadding()) {
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        if (!typing) Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text(stringResource(R.string.asst_speak_replies), Modifier.weight(1f))
             Switch(speak, { speak = it; prefs.speakReplies = it })
         }
@@ -275,7 +281,7 @@ private fun AskView(host: AssistantHost, prefs: AssistantPrefs, apps: List<AppEn
                 AssistChip(onClick = { submit(text) }, label = { Text(text) }, modifier = Modifier.heightIn(min = 48.dp))
             }
         }
-        if (micAvailable) {
+        if (micAvailable && !typing) {
             val micCd = stringResource(if (listening) R.string.asst_mic_stop_cd else R.string.asst_mic_cd)
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(
@@ -295,7 +301,7 @@ private fun AskView(host: AssistantHost, prefs: AssistantPrefs, apps: List<AppEn
             OutlinedTextField(
                 input, { input = it }, Modifier.weight(1f),
                 placeholder = { Text(stringResource(R.string.asst_input_hint)) },
-                maxLines = 2,
+                singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
                 keyboardActions = KeyboardActions(onSend = { submit(input) }),
             )
@@ -304,7 +310,7 @@ private fun AskView(host: AssistantHost, prefs: AssistantPrefs, apps: List<AppEn
                 Text(stringResource(R.string.asst_send))
             }
         }
-        TextButton(onClick = onTurnOff, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(stringResource(R.string.asst_turn_off)) }
+        if (!typing) TextButton(onClick = onTurnOff, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text(stringResource(R.string.asst_turn_off)) }
     }
 }
 
