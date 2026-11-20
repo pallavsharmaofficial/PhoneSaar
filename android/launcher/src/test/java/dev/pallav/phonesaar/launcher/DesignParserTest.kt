@@ -98,3 +98,30 @@ class DesignParserTest {
         assertEquals(3, CalendarMath.monthGrid(2026, 9, true)[0].indexOfFirst { it == 1 })
     }
 }
+
+class ReorderTest {
+    private fun mono() = DesignParser.parse(File("src/main/assets/design/mono-cards.json").readText()).design.layout.blocks
+    private fun idx(b: List<Block>, t: String) = b.indexOfFirst { it.type == t }
+
+    @Test fun movingPhotoToTopOfLeftColumnPutsItFirstThere() {
+        val b = mono()
+        val out = Reorder.move(b, idx(b, "photo"), 0, 0, 2)
+        val placed = GridLayout.place(out, 2)
+        assertEquals(0, placed.first { out[it.index].type == "photo" }.row)
+        assertEquals(0, placed.first { out[it.index].type == "photo" }.col)
+        assertTrue(placed.first { out[it.index].type == "clock" }.row > 0)
+    }
+
+    @Test fun movingToOtherColumnSetsCol() {
+        val b = mono()
+        val out = Reorder.move(b, idx(b, "clock"), 1, 99, 2)
+        assertEquals(1, out.first { it.type == "clock" }.col)
+        assertEquals(b.size, out.size)
+    }
+
+    @Test fun swapStaysInBounds() {
+        val b = mono()
+        assertEquals(b, Reorder.swap(b, 0, -1))
+        assertEquals(b[1], Reorder.swap(b, 0, 1)[0])
+    }
+}

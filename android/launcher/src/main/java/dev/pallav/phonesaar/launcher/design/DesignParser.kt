@@ -14,7 +14,7 @@ object DesignParser {
             return DesignResult(base, listOf("Not valid JSON: ${e.message?.take(80)}"))
         }
         val r = Reader(root, "", warnings)
-        r.known("name", "theme", "layout", "gestures", "sphere", "features", "version")
+        r.known("name", "theme", "layout", "gestures", "sphere", "features", "version", "basedOn")
         val design = Design(
             name = r.str("name", base.name),
             theme = theme(r.obj("theme"), base.theme, warnings),
